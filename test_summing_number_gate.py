@@ -10,17 +10,11 @@ class TestSummingNumberGate(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_sum_bit(self):
-        self.assertEqual(self.sum_gate_1.sum_bit([1, 1]), 0)
-        self.assertEqual(self.sum_gate_1.sum_bit([1, 0]), 1)
-        self.assertEqual(self.sum_gate_1.sum_bit([0, 1]), 1)
-        self.assertEqual(self.sum_gate_1.sum_bit([0, 0]), 0)
-
-    def test_carry_bit(self):
-        self.assertEqual(self.sum_gate_1.carry_bit([1, 1]), 1)
-        self.assertEqual(self.sum_gate_1.carry_bit([1, 0]), 0)
-        self.assertEqual(self.sum_gate_1.carry_bit([0, 1]), 0)
-        self.assertEqual(self.sum_gate_1.carry_bit([0, 0]), 0)
+    def test_sum_bits(self):
+        self.assertEqual(self.sum_gate_1.sum_bits([1, 1]), (0, 1))
+        self.assertEqual(self.sum_gate_1.sum_bits([1, 0]), (1, 0))
+        self.assertEqual(self.sum_gate_1.sum_bits([0, 1]), (1, 0))
+        self.assertEqual(self.sum_gate_1.sum_bits([0, 0]), (0, 0))
 
 
 if __name__ == '__main__':

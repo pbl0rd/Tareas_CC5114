@@ -46,7 +46,7 @@ class Perceptron(object):
 class PerAnd(Perceptron):
 
     def __init__(self):
-        Perceptron.__init__(self, [2, 2], -3)
+        super(PerAnd, self).__init__([2, 2], -3)
 
 # Subclase del perceptrón que permite implementar la función lógica OR
 
@@ -54,7 +54,7 @@ class PerAnd(Perceptron):
 class PerOr(Perceptron):
 
     def __init__(self):
-        Perceptron.__init__(self, [2, 2], -1)
+        super(PerOr, self).__init__([2, 2], -1)
 
 # Subclase del perceptrón que permite implementar la función lógica NAND
 
@@ -62,4 +62,4 @@ class PerOr(Perceptron):
 class PerNAnd(Perceptron):
 
     def __init__(self):
-        Perceptron.__init__(self, [-2, -2], 3)
+        super(PerNAnd, self).__init__([-2, -2], 3)
