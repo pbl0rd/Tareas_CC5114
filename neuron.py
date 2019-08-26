@@ -1,5 +1,7 @@
 import numpy as np
-import sigmoid
+import sigmoid import Sigmoid
+import tanh import Tanh
+import step import Step
 
 # Clase Neurona
 class Neuron(object):
@@ -7,11 +9,15 @@ class Neuron(object):
     # recibe una lista de floats con los pesos (weights), un float
     # con el sesgo (bias) y .
 
-    def __init__(self, weights, bias):
-        self.__weights = weights
+    def __init__(self, n_weights=3, weights=4*np.random.rand(3)-2,
+                 bias=4*np.random.rand()-2, ac_function=Tanh, lr=0.1):
+        if n_weights != len(weights):
+            self.__weights = 4*np.random.rand(n_weights)-2
+        else:
+            self.__weights = weights
         self.__bias = bias
-        self.__acfunction =
-        self.__lrate = 
+        self.__acfunction = ac_function
+        self.__lrate = lr
 
     # Métodos get para obtener los atributos de la Neurona.
 
@@ -36,32 +42,40 @@ class Neuron(object):
     def set_bias(self, bias):
         self.__bias = bias
 
+    def set_acfunction(self, ac_function):
+        self.__acfunction = ac_function
+
+    def set_lrate(self, l_rate):
+        self.__lrate = l_rate
+
     # Método para alimentar al perceptron con un arreglo de inputs (x)
     # del mismo tamaño que el arreglo (weights) y retornar la respuesta
     # de la Neurona.
     def feed(self, x):
         if len(x) == len(self.__weights):
-            if np.dot(x, self.__weights) + self.__bias <= 0:
-                return 0
-            else:
-                return 1
+            val = np.dot(x, self.__weights) + self.__bias
+            res = self.__acfunction.apply(val)
+            return res
         else:
             raise ValueError("Número de inputs incorrecto")
 
-    def train(self, input, answer):
-        if type(train_set) is list:
-            self.set_weights(weights_0)
-            self.set_bias(bias_0)
-            for item in train_set:
-                if len(item) - 1 == len(self.__weights):
-                    diff = item[-1] - self.feed(item[:-1])
-                    new_w = []
-                    for i in range(len(self.__weights)):
-                        new_w.append(self._weights[i] + lr * item[i] * diff)
-                    self.set_weights(new_w)
-                    new_b = self.__bias + lr * diff
-                    self.set_bias(new_b)
-                else:
-                    raise ValueError("Número de inputs incorrecto")
+    def train(self, x, answer):
+        old_w = self.get_weights()
+        if len(x) == len(old_w):
+            res = self.feed(x)
+            diff = answer - res
+            l_rate = self.get_lrate()
+            old_b = self.get_bias()
+            if self.__acfunction == Step:
+                delta = diff
+            else:
+                delta = diff * self.__acfunction.derivative(res)
+            new_w = []
+            for i in range(len(old_w)):
+                new_w.append(old_w[i] + l_rate * x[i] * delta)
+            self.set_weights(new_w)
+            new_b = old_b + l_rate * delta
+            self.set_bias(new_b)
         else:
-            raise ValueError("Train_set debe ser una lista de listas de floats")
+            raise ValueError("Número de inputs incorrecto")
+

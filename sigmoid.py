@@ -5,9 +5,9 @@ import numpy as np
 class Sigmoid(object):
 
     # Método para aplicar la función
-    def apply(self, x):
+    def apply(x):
         return 1 / (1 + np.exp(-x))
 
     # Método para aplicar la derivada de la función
-    def derivative(self, x):
-        return self.apply(x)*(1 - self.apply(x))
+    def derivative(x):
+        return Sigmoid.apply(x)*(1 - Sigmoid.apply(x))
