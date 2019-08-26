@@ -1,5 +1,5 @@
 import numpy as np
-
+import sigmoid
 
 # Clase Neurona
 class Neuron(object):
@@ -10,6 +10,7 @@ class Neuron(object):
     def __init__(self, weights, bias):
         self.__weights = weights
         self.__bias = bias
+        self.__acfunction =
         self.__lrate = 
 
     # Métodos get para obtener los atributos de la Neurona.
@@ -19,6 +20,12 @@ class Neuron(object):
 
     def get_bias(self):
         return self.__bias
+
+    def get_acfunction(self):
+        return self.__acfunction
+
+    def get_lrate(self):
+        return self.__lrate
 
     # Métodos set para fijar nuevos valores para los atributos de
     # la Neurona.
