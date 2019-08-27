@@ -6,9 +6,9 @@ import numpy as np
 class Tanh(object):
 
     # Método para aplicar la función
-    def apply(x):
+    def apply(self, x):
         return (np.exp(x) - np.exp(-x)) / (np.exp(x) + np.exp(-x))
 
     # Método para aplicar la derivada de la función
-    def derivative(x):
-        return 1 - Tanh.apply(x)**2
+    def derivative(self, x):
+        return 1 - self.apply(x)**2

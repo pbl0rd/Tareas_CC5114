@@ -1,7 +1,7 @@
 import numpy as np
-import sigmoid import Sigmoid
-import tanh import Tanh
-import step import Step
+from sigmoid import Sigmoid
+from tanh import Tanh
+from step import Step
 
 # Clase Neurona
 class Neuron(object):
@@ -10,7 +10,7 @@ class Neuron(object):
     # con el sesgo (bias) y .
 
     def __init__(self, n_weights=3, weights=4*np.random.rand(3)-2,
-                 bias=4*np.random.rand()-2, ac_function=Tanh, lr=0.1):
+                 bias=4*np.random.rand()-2, ac_function=Tanh(), lr=0.1):
         if n_weights != len(weights):
             self.__weights = 4*np.random.rand(n_weights)-2
         else:
@@ -66,7 +66,7 @@ class Neuron(object):
             diff = answer - res
             l_rate = self.get_lrate()
             old_b = self.get_bias()
-            if self.__acfunction == Step:
+            if self.__acfunction == Step():
                 delta = diff
             else:
                 delta = diff * self.__acfunction.derivative(res)
