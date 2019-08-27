@@ -17,6 +17,12 @@ class NeuronLayer(object):
                 self.__neurons.append(Neuron(n_weights=len(wieghts[i]), weights=weights[i],
                                              ac_function=ac_function, lr=lr))
 
+    def get_lenght(self):
+        return self.__length
+
+    def get_acfunction(self):
+        return self.__acfunction
+
     def feed(self, x):
         res = []
         for i in range(len(self.__neurons)):

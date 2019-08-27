@@ -42,6 +42,17 @@ class NeuralNetwork(object):
             in_aux = res[:]
         return res[:], layers_out[:]
 
+    def back_prop(self, layers_out, y):
+        error = y - layers_out[-1]
+        delta = np.multiply(error, self.__layers[-1].get_acfunction().derivative(layers_out[-1]))
+        grads = []
+        grads.append(delta[:])
+        for i in range(len(self.__layers)-1):
+            
+            for j in range(self.__layers[-1-i].get_lenght()):
+            error =[np.dot()]
+
+
     def train(self, x, y):
         res, layers_out = self.feed(x)
 
