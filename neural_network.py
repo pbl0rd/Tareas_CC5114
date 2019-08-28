@@ -92,6 +92,8 @@ class NeuralNetwork(object):
         self.set_weights(new_weights)
         self.set_bias(new_bias)
 
+    def eval(self, test_set, test_y):
+
 
 
 
