@@ -1,5 +1,6 @@
 import numpy as np
 from neuron import Neuron
+from step import Step
 
 
 class NeuronLayer(object):
@@ -8,20 +9,52 @@ class NeuronLayer(object):
         self.__length = neurons
         self.__acfunction = ac_function
         self.__lrate = lr
-        self.__neurons = []
-        if weights == None:
+        self.__neurons = {}
+        if weights is None:
             for i in range(neurons):
-                self.__neurons.append(Neuron(n_weights=n_weights, ac_function=ac_function, lr=lr))
+                self.__neurons[i] = Neuron(n_weights=n_weights, ac_function=ac_function, lr=lr)
         else:
             for i in range(neurons):
-                self.__neurons.append(Neuron(n_weights=len(wieghts[i]), weights=weights[i],
-                                             ac_function=ac_function, lr=lr))
+                self.__neurons[i] = Neuron(n_weights=len(weights[i]), weights=weights[i], ac_function=ac_function,
+                                           lr=lr)
 
     def get_lenght(self):
         return self.__length
 
+    def get_lrate(self):
+        return self.__lrate
+
     def get_acfunction(self):
         return self.__acfunction
+
+    def get_neurons(self):
+        return self.__neurons[:]
+
+    def get_weights(self, i=None):
+        if i is None:
+            weights = {}
+            for j in range(self.__length):
+                weights[j] = self.__neurons[j].get_weights()
+            return weights.copy()
+        else:
+            weights_i = []
+            for j in range(self.__length):
+                weights_i.append = self.__neurons[j].get_weights()[i]
+            return weights_i[:]
+
+    def get_bias(self):
+        bias = {}
+        for j in range(self.__length):
+            bias[j] = self.__neurons[j].get_bias()
+        return bias.copy()
+
+    def set_weights(self, new_weights):
+        for j in range(self.__length):
+            self.__neurons[j].set_weights(new_weights[j])
+
+    def set_bias(self, new_bias):
+        for j in range(self.__length):
+            self.__neurons[j].set_bias(new_bias[j])
 
     def feed(self, x):
         res = []

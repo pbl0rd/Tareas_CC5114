@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f696be95-dd68-4ca5-888d-077de4e46dd4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Tareas_CC5114.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Tareas_CC5114.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/neural_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/neuron_layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/neuron_layer.py" afterDir="false" />
