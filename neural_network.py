@@ -91,6 +91,41 @@ class NeuralNetwork(object):
         new_weights, new_bias = self.upd_params(x, layers_out, grads)
         self.set_weights(new_weights)
         self.set_bias(new_bias)
+        ans = np.array(y)
+        ans_hat = np.array(res)
+        diff =ans-ans_hat
+        error = np.dot(diff,diff)/len(diff)
+        if error == 0.0:
+            acierto = 1
+        else:
+            acierto = 0
+        return res, error, acierto
+
+    def train_w_set(self, x, y):
+        preds = []
+        epoch_error = 0
+        accuracy = 0
+        for j in range(len(x)):
+            res, error, acierto= self.train(x[j], y[j])
+            preds.append(res[:])
+            epoch_error += error
+            accuracy += acierto
+        epoch_error = epoch_error/len(x)
+        accuracy = accuracy/len(x)
+        return preds[:], epoch_error, accuracy
+
+
+    def train_network(self, x, y, epochs=100):
+        preds_per_epoch = {}
+        error_per_epoch = {}
+        accuracy_per_epoch = {}
+        for i in range(epochs):
+            preds, epoch_error, accuracy = self.train_w_set(x, y)
+            preds_per_epoch[i] = preds[:]
+            error_per_epoch[i] = epoch_error
+            accuracy_per_epoch[i] = epoch_error
+        return preds_per_epoch.copy(), error_per_epoch.copy(), accuracy_per_epoch.copy()
+
 
     def eval(self, test_set, test_y):
 
