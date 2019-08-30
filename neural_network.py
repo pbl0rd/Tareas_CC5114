@@ -1,7 +1,8 @@
 import numpy as np
 from neuron_layer import NeuronLayer
 from step import Step
-
+from tanh import Tanh
+from sigmoid import Sigmoid
 
 class NeuralNetwork(object):
 
@@ -15,10 +16,10 @@ class NeuralNetwork(object):
             for i in range(hlayers+1):
                 if i == 0:
                     self.__layers[i] = NeuronLayer(neurons=neurons_per_layer[i], n_weights=entrada,
-                                                     ac_functions=ac_functions[i], lr=lr)
+                                                     ac_function=ac_functions[i], lr=lr)
                 elif i == hlayers:
                     self.__layers[i] = NeuronLayer(neurons=salida, n_weights=neurons_per_layer[i-1],
-                                                     ac_functions=ac_functions[i], lr=lr)
+                                                     ac_function=ac_functions[i], lr=lr)
                 else:
                     self.__layers[i] = NeuronLayer(neurons=neurons_per_layer[i], n_weights=neurons_per_layer[i-1],
                                                      ac_function=ac_functions[i], lr=lr)
@@ -26,10 +27,10 @@ class NeuralNetwork(object):
             for i in range(hlayers+1):
                 if i == 0:
                     self.__layers[i] = NeuronLayer(neurons=neurons_per_layer[i], weights=weights[i],
-                                                     ac_functions=ac_functions[i], lr=lr)
+                                                     ac_function=ac_functions[i], lr=lr)
                 elif i == hlayers:
                     self.__layers[i] = NeuronLayer(neurons=salida,  weights=weights[i],
-                                                     ac_functions=ac_functions[i], lr=lr)
+                                                     ac_function=ac_functions[i], lr=lr)
                 else:
                     self.__layers[i] = NeuronLayer(neurons=neurons_per_layer[i],  weights=weights[i],
                                                      ac_function=ac_functions[i], lr=lr)
@@ -41,6 +42,12 @@ class NeuralNetwork(object):
     def set_bias(self, new_bias):
         for i in range(self.__hlayers+1):
             self.__layers[i].set_bias(new_bias[i])
+
+    def get_weights(self):
+        weights ={}
+        for i in range(self.__hlayers+1):
+            weights[i] = self.__layers[i].get_weights()
+        return weights.copy()
 
     def feed(self, x):
         in_aux = x
@@ -76,11 +83,14 @@ class NeuralNetwork(object):
             new_weights = {}
             new_bias = {}
             for j in range(self.__layers[i].get_lenght()):
-                if i == 0:
-                    new_weights[j] = old_weights[j] + x[j] * lr * grads[i][j]
-                else:
-                    new_weights[j] = old_weights[j] + layers_out[i-1][j] * lr * grads[i][j]
-                new_bias[j] = old_bias + lr * grads[i][j]
+                new_weights_neuron = []
+                for k in range(len(self.__layers[i].get_neurons()[j].get_weights())):
+                    if i == 0:
+                        new_weights_neuron.append(old_weights[j][k] + x[k] * lr * grads[i][j])
+                    else:
+                        new_weights_neuron.append(old_weights[j][k] + layers_out[i-1][k] * lr * grads[i][j])
+                new_weights[j] = np.array(new_weights_neuron).copy()
+                new_bias[j] = old_bias[j] + lr * grads[i][j]
             new_weights_net[i] = new_weights.copy()
             new_bias_net[i] = new_bias.copy()
         return new_weights_net.copy(), new_bias_net.copy()
@@ -114,7 +124,6 @@ class NeuralNetwork(object):
         accuracy = accuracy/len(x)
         return preds[:], epoch_error, accuracy
 
-
     def train_network(self, x, y, epochs=100):
         preds_per_epoch = {}
         error_per_epoch = {}
@@ -123,11 +132,33 @@ class NeuralNetwork(object):
             preds, epoch_error, accuracy = self.train_w_set(x, y)
             preds_per_epoch[i] = preds[:]
             error_per_epoch[i] = epoch_error
-            accuracy_per_epoch[i] = epoch_error
+            accuracy_per_epoch[i] = accuracy
         return preds_per_epoch.copy(), error_per_epoch.copy(), accuracy_per_epoch.copy()
 
+    def eval(self,test_x, test_y):
+        preds = []
+        error_final = 0
+        accuracy = 0
+        for i in range(len(test_x)):
+            res, layers_out = self.feed(test_x[i])
+            preds.append(res)
+            ans = np.array(test_y[i])
+            ans_hat = np.array(res)
+            diff = ans - ans_hat
+            error = np.dot(diff, diff) / len(diff)
+            if error == 0.0:
+                acierto = 1
+            else:
+                acierto = 0
+            error_final += error
+            accuracy += acierto
+        error_final = error_final/len(test_x)
+        accuracy = accuracy/len(test_x)
+        return preds[:], error_final, accuracy
 
-    def eval(self, test_set, test_y):
+
+
+
 
 
 

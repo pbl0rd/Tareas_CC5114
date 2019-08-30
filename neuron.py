@@ -2,6 +2,8 @@ import numpy as np
 from sigmoid import Sigmoid
 from tanh import Tanh
 from step import Step
+from tanh import Tanh
+from sigmoid import Sigmoid
 
 # Clase Neurona
 class Neuron(object):

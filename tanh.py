@@ -7,8 +7,10 @@ class Tanh(object):
 
     # Método para aplicar la función
     def apply(self, x):
-        return (np.exp(x) - np.exp(-x)) / (np.exp(x) + np.exp(-x))
+        x_aux = np.array(x)
+        return (np.exp(x_aux) - np.exp(-x_aux)) / (np.exp(x_aux) + np.exp(-x_aux))
 
     # Método para aplicar la derivada de la función
     def derivative(self, x):
-        return 1 - self.apply(x)**2
+        x_aux = np.array(x)
+        return 1 - self.apply(x_aux)**2

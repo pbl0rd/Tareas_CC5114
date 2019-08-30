@@ -1,7 +1,8 @@
 import numpy as np
 from neuron import Neuron
 from step import Step
-
+from tanh import Tanh
+from sigmoid import Sigmoid
 
 class NeuronLayer(object):
 
@@ -28,7 +29,7 @@ class NeuronLayer(object):
         return self.__acfunction
 
     def get_neurons(self):
-        return self.__neurons[:]
+        return self.__neurons.copy()
 
     def get_weights(self, i=None):
         if i is None:
@@ -39,7 +40,7 @@ class NeuronLayer(object):
         else:
             weights_i = []
             for j in range(self.__length):
-                weights_i.append = self.__neurons[j].get_weights()[i]
+                weights_i.append(self.__neurons[j].get_weights()[i])
             return weights_i[:]
 
     def get_bias(self):
