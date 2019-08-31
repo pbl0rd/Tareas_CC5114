@@ -16,6 +16,7 @@ def normalize_func(x, high=1, low=0):
 
 
 if __name__ == '__main__':
+    np.seterr(over='ignore')
     iris = np.loadtxt('seeds_dataset.txt', delimiter=',')
     features = iris[:, :7]
     labels = iris[:, 7].astype(int) - 1
@@ -23,12 +24,12 @@ if __name__ == '__main__':
     features_2 = normalize_func(features)
     data_train, data_test, labels_train, labels_test = train_test_split(features_2, labels_2, test_size=0.20,
                                                                         random_state=42)
-    hlayers = 4
-    neurons_per_layer = [8, 7, 6, 7]
+    hlayers = 3
+    neurons_per_layer = [20, 20, 20]
     entrada = 7
     salida = 3
-    lr = 0.03
-    ac_functions = {0: Sigmoid(), 1: Sigmoid(), 2: Tanh(), 3: Sigmoid(), 4: Sigmoid()}
+    lr = 0.005
+    ac_functions = {0: Sigmoid(), 1: Sigmoid(), 2: Sigmoid(), 3: Sigmoid()}
     np.random.seed(0)
     weights = {}
     for i in range(hlayers + 1):
@@ -48,9 +49,12 @@ if __name__ == '__main__':
                           weights=weights, lr=lr, ac_functions=ac_functions)
     epochs = 300
     preds_per_epoch, error_per_epoch, accuracy_per_epoch = model.train_network(data_train,labels_train, epochs)
-    #with open('preds_per_epoch.txt', 'w') as f:
-     #   print(preds_per_epoch, file=f)
+    with open('preds_per_epoch.txt', 'w') as f:
+        print(preds_per_epoch, file=f)
     with open('error_per_epoch.txt', 'w') as f:
         print(error_per_epoch, file=f)
     with open('accuracy_per_epoch.txt', 'w') as f:
         print(accuracy_per_epoch, file=f)
+    final_weights = model.get_weights()
+    with open('final_weights.txt', 'w') as f:
+        print(final_weights, file=f)

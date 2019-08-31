@@ -1,7 +1,8 @@
 import numpy as np
-
+import scipy as sp
 
 # Clase para la función de activación sigmoide
+np.seterr(over='ignore')
 class Sigmoid(object):
 
     # Método para aplicar la función

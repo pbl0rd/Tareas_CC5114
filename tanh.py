@@ -1,8 +1,10 @@
 import numpy as np
+import scipy as sp
 
 
 # Clase para la función de activación
 # tangente hiperbólica
+np.seterr(over='ignore')
 class Tanh(object):
 
     # Método para aplicar la función

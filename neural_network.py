@@ -4,6 +4,7 @@ from step import Step
 from tanh import Tanh
 from sigmoid import Sigmoid
 
+np.seterr(over='ignore')
 class NeuralNetwork(object):
 
     def __init__(self, hlayers=2, neurons_per_layer=[3, 3], entrada=3, salida=2,
@@ -58,6 +59,8 @@ class NeuralNetwork(object):
             in_aux = res[:]
         return res[:], layers_out.copy()
 
+    # método para propagar el error, recibe los outputs de cada capa y la etiqueta
+    # deltas de cada neurona. Retorna un diccionario con los nuevos pesos de la red y otro con los nuevos bias
     def back_prop(self, layers_out, y):
         pos = self.__hlayers # posición empezamos en la última capa
         grads = {} # guardaremos los vectores con los delta en este diccionario
@@ -73,17 +76,19 @@ class NeuralNetwork(object):
                 grads[pos-i] = delta
         return grads.copy()
 
+    # método para actualizar los parámetros de la red, recibe el input de la red, los outputs de cada capa y los
+    # deltas de cada neurona. Retorna un diccionario con los nuevos pesos de la red y otro con los nuevos bias
     def upd_params(self, x, layers_out, grads):
-        new_weights_net = {}
-        new_bias_net = {}
-        lr = self.__lrate
-        for i in range(self.__hlayers+1):
-            old_weights = self.__layers[i].get_weights()
-            old_bias = self.__layers[i].get_bias()
-            new_weights = {}
-            new_bias = {}
-            for j in range(self.__layers[i].get_lenght()):
-                new_weights_neuron = []
+        new_weights_net = {}  # diccionario donde se guardarán los nuevos pesos de la red
+        new_bias_net = {}  # diccionario donde se guardarán los nuevos bias de la red
+        lr = self.__lrate  # obtenemos el learning rate de la red
+        for i in range(self.__hlayers+1):  # Recorremos las capas de la red
+            old_weights = self.__layers[i].get_weights()  # diccionario con los pesos actuales de la capa i
+            old_bias = self.__layers[i].get_bias()  # diccionario con los bias actuales de la capa i
+            new_weights = {}  # diccionario para guardar los pesos nuevos de la capa i
+            new_bias = {}  # diccionario para guardar los bias nuevos de la capa i
+            for j in range(self.__layers[i].get_lenght()):  # Recorremos las capas de la red
+                new_weights_neuron = []  # lista para guardar los nuevos pesos de la neurona j
                 for k in range(len(self.__layers[i].get_neurons()[j].get_weights())):
                     if i == 0:
                         new_weights_neuron.append(old_weights[j][k] + x[k] * lr * grads[i][j])
