@@ -4,11 +4,11 @@ from step import Step
 from tanh import Tanh
 from sigmoid import Sigmoid
 
-np.seterr(over='ignore')
+# Clase Red Neuronal
 class NeuralNetwork(object):
 
     def __init__(self, hlayers=2, neurons_per_layer=[3, 3], entrada=3, salida=2,
-                 weights=None, lr=0.1, ac_functions={0:Step(), 1:Step(), 2:Step()}):
+                 weights=None, lr=0.1, ac_functions={0: Sigmoid(), 1: Sigmoid(), 2: Sigmoid()}):
         self.__acfunctions = ac_functions
         self.__lrate = lr
         self.__hlayers = hlayers

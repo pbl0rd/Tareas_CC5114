@@ -4,8 +4,13 @@ from step import Step
 from tanh import Tanh
 from sigmoid import Sigmoid
 
+# Clase Capa de Red Neuronal
 class NeuronLayer(object):
 
+    # Método constructor para la clase Capa de Red Neuronal que recibe un entero con el número de neuronas de la capa,
+    # otro entero con el número de pesos que debe tener cada una de las neuronas de la capa. Opcionalmente puede
+    # recibir un diccionario con los pesos de cada neurona (lista),  una lista con los pesos (weights) y un float
+    # con el sesgo (bias).
     def __init__(self, neurons=1, n_weights=3, weights=None, lr=0.1, ac_function=Step()):
         self.__length = neurons
         self.__acfunction = ac_function
