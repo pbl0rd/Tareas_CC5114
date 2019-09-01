@@ -1,14 +1,14 @@
 import numpy as np
 from neuron_layer import NeuronLayer
-from step import Step
 from tanh import Tanh
 from sigmoid import Sigmoid
+
 
 # Clase Red Neuronal
 class NeuralNetwork(object):
 
-    def __init__(self, hlayers=2, neurons_per_layer=[3, 3], entrada=3, salida=2,
-                 weights=None, lr=0.1, ac_functions={0: Sigmoid(), 1: Sigmoid(), 2: Sigmoid()}):
+    def __init__(self, hlayers: int, neurons_per_layer: list, entrada: int, salida: int,
+                 weights=None, bias=None, ac_functions=None, lr=0.1):
         self.__acfunctions = ac_functions
         self.__lrate = lr
         self.__hlayers = hlayers
@@ -54,7 +54,7 @@ class NeuralNetwork(object):
         in_aux = x
         layers_out = {}
         for i in range(self.__hlayers+1):
-            res = self.__layers[i].feed(in_aux)[:]
+            res = self.__layers[i].feed(in_aux).copy()
             layers_out[i] = res[:]
             in_aux = res[:]
         return res[:], layers_out.copy()
@@ -108,8 +108,8 @@ class NeuralNetwork(object):
         self.set_bias(new_bias)
         ans = np.array(y)
         ans_hat = np.array(res)
-        diff =ans-ans_hat
-        error = np.dot(diff,diff)/len(diff)
+        diff = ans-ans_hat
+        error = np.dot(diff, diff)/len(diff)
         if error == 0.0:
             acierto = 1
         else:

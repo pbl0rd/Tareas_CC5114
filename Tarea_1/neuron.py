@@ -13,17 +13,19 @@ class Neuron(object):
     # con el sesgo (bias), el tipo de función de activación que debe tener la neurona (Sigmoid(), Tanh() o Step()) y
     # finalmente un float con la tasa de aprendizaje lr.
 
-    def __init__(self, n_weights: int, weights=None, bias=None, ac_function=Sigmoid(), lr=0.1):
+    def __init__(self, n_weights: int, weights=None, bias=None, ac_function=Sigmoid(), lrate=0.1):
         # Verificamos que los parámetros de entrada del constructor sean los correctos
         if type(n_weights) != int:
-            raise ValueError("Input n_weights debe ser un número entero")
+            raise ValueError("Input n_weights debe ser un número entero positivo")
+        elif n_weights < 1:
+            raise ValueError("Input n_weights debe ser un número entero positivo")
         elif weights is not None and type(weights) not in [list, np.ndarray]:
             raise ValueError("Los pesos Weights debe ser una lista de floats")
         elif weights is not None and len(weights) != n_weights:
             raise ValueError("el número n_weights debe coincidir con los pesos entregados")
         elif type(ac_function) != Step and type(ac_function) != Sigmoid and type(ac_function) != Tanh:
             raise ValueError("La función de activación debe ser Step(), Sigmoid() o bien, Tanh()")
-        elif type(lr) != float:
+        elif type(lrate) != float:
             raise ValueError("La tasa de aprendizaje lr debe ser un float")
         elif bias is not None and type(bias) != float:
             raise ValueError("El sesgo bias debe ser un float")
@@ -41,7 +43,7 @@ class Neuron(object):
                 self.__bias = bias
             self.__length = n_weights
             self.__acfunction = ac_function
-            self.__lrate = lr
+            self.__lrate = lrate
 
     # Métodos get para obtener los atributos de la Neurona.
 
@@ -58,7 +60,7 @@ class Neuron(object):
         if type(i) != int:
             raise ValueError("el input debe ser un número entero")
         elif i >= self.__length or i < -self.__length:
-            raise ValueError("La neurona no tiene el peso indicado")
+            raise ValueError("la posición está fuera del rango de pesos de la neurona")
         else:
             return self.__weights[i]
 
@@ -83,7 +85,7 @@ class Neuron(object):
         elif len(pesos) != self.__length:
             raise ValueError("Número de pesos incorrecto")
         else:
-            for i in range(len(pesos)):
+            for i in range(self.__length):
                 if type(pesos[i]) != float:
                     raise ValueError("cada peso debe ser un float")
             self.__weights = np.array(pesos)
@@ -123,30 +125,47 @@ class Neuron(object):
     # del mismo tamaño que el arreglo (weights) y retornar la respuesta
     # de la Neurona.
     def feed(self, x: np.ndarray):
-        if len(x) == len(self.__weights):
+        if type(x) not in [list, np.ndarray]:
+            raise ValueError("el input x debe ser un arreglo de floats")
+        elif len(x) != self.__length:
+            raise ValueError("Largo del arreglo incorrecto")
+        else:
+            for i in range(self.__length):
+                if type(x[i]) != float:
+                    raise ValueError("cada input del arreglo debe ser un float")
             val = np.dot(x, self.__weights) + self.__bias
             res = self.__acfunction.apply(val)
             return res
-        else:
-            raise ValueError("Número de inputs incorrecto")
 
-    def train(self, x, answer):
-        old_w = self.get_weights()
-        if len(x) == len(old_w):
-            res = self.feed(x)
-            diff = answer - res
-            l_rate = self.get_lrate()
-            old_b = self.get_bias()
+    # Método para entrenar a la neurona. Recibe con un arreglo de inputs (x)
+    # del mismo tamaño que el arreglo (weights) y un float con la respuesta esperada. Realiza
+    # el proceso de actualizar los pesos y bias en base al ejemplo entregado.
+    def train(self, x: np.ndarray, answer: float):
+        if type(answer) not in [int, float]:
+            raise ValueError("La salida esperada answer debe ser un número")
+        elif type(x) not in [list, np.ndarray]:
+            raise ValueError("el input x debe ser un arreglo de floats")
+        elif len(x) != self.__length:
+            raise ValueError("Largo del arreglo incorrecto")
+        else:
+            for i in range(self.__length):
+                if type(x[i]) != float:
+                    raise ValueError("cada input del arreglo debe ser un float")
+            old_w = self.get_weights()
+            res = self.feed(x)  # obtenemos la salida de la neurona
+            diff = float(answer) - res  # calculamos el error
+            l_rate = self.__lrate
+            old_b = self.__bias
+            # Calculamos delta dependiendo del tipo de función de activación de la neurona
             if self.__acfunction == Step():
                 delta = diff
             else:
                 delta = diff * self.__acfunction.derivative(res)
-            new_w = []
-            for i in range(len(old_w)):
+            new_w = []  # Arreglo donde guardaremos los nuevos pesos
+            # Calculamos los nuevos pesos
+            for i in range(self.__length):
                 new_w.append(old_w[i] + l_rate * x[i] * delta)
-            self.set_weights(new_w)
-            new_b = old_b + l_rate * delta
-            self.set_bias(new_b)
-        else:
-            raise ValueError("Número de inputs incorrecto")
+            self.set_weights(np.array(new_w))  # Actualizamos los pesos
+            new_b = old_b + l_rate * delta  # Calculamos el nuevo sesgo
+            self.set_bias(new_b)  # Actualizamos el sesgo
 
