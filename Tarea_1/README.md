@@ -36,21 +36,26 @@ Entrenamos la red con un 80% del dataset. Es decir, nuestra partición del datas
 
 Al entrenar la red obtuvimos el siguiente comportamiento:
 Error por época: 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png)
+
+![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_1/Images/Error%20por%20epoca.png)
+
 Accuracy por época: 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png)
+![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_1/Images/Accuracy%20por%20epoca.png)
+
 Podemos observar que se cumnple lo esperado, es decir, el error va disminuyendo a medida que aumenta el número de épocas y por el contrario el porcetaje de aciertos va 
 aumentando a medida que aumenta el número de épocas.
 
 Al evaluar en el dataset de testeo obtuvimos:
 - Un error MSE igual a 0.08950901338195494
 - un porcentaje de acierto igual a 0.8095238095238095
-Y la matriz de confusion para las 3 clases posibles es la siguiente
-               | 1             | 2             | 3      |
-:-------------:| :------------:|:-------------:|: -----:|
-         1     | 7             | 2             |   2    |
-         2     |  0            | 14            |   0    |
-         3     |   4           | 0             |    13  |
+Y la matriz de confusion para las 3 clases posibles es la siguiente.
+
+|               | 1             | 2             | 3      |
+|:-------------:| :------------:|:-------------:|: -----:|
+|         1     | 7             | 2             |   2    |
+|         2     |  0            | 14            |   0    |
+|         3     |   4           | 0             |    13  |
+		 
 
 Los aprendizajes realizados en el desarrollo de esta tarea pueden resumirse en lo siguiente:
 - Fue complejo generar los métodos de back propagation de manera correcta
