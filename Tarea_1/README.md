@@ -50,8 +50,8 @@ Al evaluar en el dataset de testeo obtuvimos:
 - un porcentaje de acierto igual a 0.8095238095238095
 Y la matriz de confusion para las 3 clases posibles es la siguiente.
 
-|               | 1             | 2             | 3      |
-|:-------------:| :------------:|:-------------:|: -----:|
+|      Matriz de confusión         | 1             | 2             | 3      |
+|-------------  | :------------:|:-------------:|: -----:|
 |         1     | 7             | 2             |   2    |
 |         2     |  0            | 14            |   0    |
 |         3     |   4           | 0             |    13  |
