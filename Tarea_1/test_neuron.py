@@ -66,7 +66,7 @@ class TestNeuron(unittest.TestCase):
         self.assertEqual(self.neuron.get_lrate(), 0.1)
 
     def test_set_weights(self):
-        self.neuron.set_weights([0.1, 0.1, 0.1, 0.1, 0.1])
+        self.neuron.set_weights(np.array([0.1, 0.1, 0.1, 0.1, 0.1]))
         for i in range(len([0.1, 0.1, 0.1, 0.1, 0.1])):
             self.assertEqual(self.neuron.get_weights()[i], [0.1, 0.1, 0.1, 0.1, 0.1][i])
         with self.assertRaises(ValueError):

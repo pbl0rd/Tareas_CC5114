@@ -34,7 +34,7 @@ class Neuron(object):
                 self.__weights = 4*np.random.rand(n_weights)-2
             else:
                 for i in range(len(weights)):
-                    if type(weights[i]) != float:
+                    if type(weights[i]) not in [float, np.float64]:
                         raise ValueError("cada peso debe ser un float")
                 self.__weights=np.array(weights)
             if bias is None: # En caso de no contar con el bias
@@ -86,7 +86,7 @@ class Neuron(object):
             raise ValueError("Número de pesos incorrecto")
         else:
             for i in range(self.__length):
-                if type(pesos[i]) != float:
+                if type(pesos[i]) not in [float, np.float64]:
                     raise ValueError("cada peso debe ser un float")
             self.__weights = np.array(pesos)
 
@@ -101,7 +101,7 @@ class Neuron(object):
 
     # Función para modificar el sesgo de la neurona. Recibe un float con el nuevo sesgo
     def set_bias(self, bias: float):
-        if type(bias) != float:
+        if type(bias) not in [float, np.float64]:
             raise ValueError("El sesgo bias debe ser un float")
         else:
             self.__bias = bias
@@ -131,7 +131,7 @@ class Neuron(object):
             raise ValueError("Largo del arreglo incorrecto")
         else:
             for i in range(self.__length):
-                if type(x[i]) != float:
+                if type(x[i]) not in [float, np.float64]:
                     raise ValueError("cada input del arreglo debe ser un float")
             val = np.dot(x, self.__weights) + self.__bias
             res = self.__acfunction.apply(val)
