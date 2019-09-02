@@ -50,17 +50,11 @@ Al evaluar en el dataset de testeo obtuvimos:
 - un porcentaje de acierto igual a 0.8095238095238095
 Y la matriz de confusion para las 3 clases posibles es la siguiente.
 
-| Attempt | #1  | #2  |
-| :-----: | :-: | :-: |
-| Seconds | 301 | 283 |
-
-
-|      Matriz de confusión         | 1             | 2             | 3      |
-|-------------  | :------------:|:-------------:|: -----:|
-|         1     | 7             | 2             |   2    |
-|         2     |  0            | 14            |   0    |
-|         3     |   4           | 0             |    13  |
-		 
+| Matriz de confusión | 1  | 2  | 3 |
+| :-----: | :-: | :-: | :-: |
+| 1 | 7 | 2 | 2 |
+| 2 | 0 | 14 | 0 |
+| 1 | 4 | 0 | 13 |
 
 Los aprendizajes realizados en el desarrollo de esta tarea pueden resumirse en lo siguiente:
 - Fue complejo generar los métodos de back propagation de manera correcta
