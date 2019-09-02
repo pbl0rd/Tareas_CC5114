@@ -5,7 +5,8 @@ from neuron import Neuron
 from tanh import Tanh
 from sigmoid import Sigmoid
 from sklearn.model_selection import train_test_split
-
+import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix
 
 # Función que ocuparemos para normalizar el dataset
 def normalize_func(x, high=1, low=0):
@@ -80,5 +81,37 @@ if __name__ == '__main__':
     preds_test, error_test, accuracy_test = model.eval(data_test, labels_test)
     with open('preds_test.txt', 'w') as f:
         print(preds_test, file=f)
+    with open('labels_test.txt', 'w') as f:
+        print(labels_test, file=f)
+    # obtenemos las imagenes para el informe
+    x1 = np.array(list(error_per_epoch.keys()))
+    y1 = np.array(list(error_per_epoch.values()))
+    x1 = x1 + 1
+    plt.figure(figsize=(20, 10))
+    plt.plot(x1, y1, c='green', ls='--')
+    plt.title('Error por Época')
+    plt.xlim(0, 301)
+    plt.ylim(0.0, 0.6)
+    plt.xlabel('Época')
+    plt.ylabel('Error')
+    plt.savefig('Images\\Error por epoca.png')
+    plt.close()
+    x2 = np.array(list(accuracy_per_epoch.keys()))
+    y2 = np.array(list(accuracy_per_epoch.values()))
+    x2 = x2 + 1
+    plt.figure(figsize=(20, 10))
+    plt.plot(x2, y2, c='red', ls='--')
+    plt.title('Accuracy por Época')
+    plt.xlim(0, 301)
+    plt.ylim(0.0, 1.0)
+    plt.xlabel('Época')
+    plt.ylabel('Accuracy')
+    plt.savefig('Images\\Accuracy por epoca.png')
+    plt.close()
+    # Obtenemos la matriz de confusion
+    labels2 = [np.argmax(item) + 1 for item in labels_test]
+    preds2 = [np.argmax(item) + 1 for item in preds_test]
+    conf_matrix = confusion_matrix(labels2, preds2)
     print(error_test)
     print(accuracy_test)
+    print(conf_matrix)

@@ -19,22 +19,38 @@ Luego podemos ejecutar el comando `pip install -U scikit-learn`
 
 ### Dataset
 
-- El dataset ocupado fue el recomendado en el enunciado de la tarea, es decir, Iris dataset. El cual corresponde a las mediciones de las semillas de 3 tipos de flores de iris, las cuales son:
--
--
--
--
--Podemos obtener una descripción más detallada [acá](https://archive.ics.uci.edu/ml/datasets/seeds)
+- El dataset ocupado fue el recomendado en el enunciado de la tarea, es decir, Iris dataset. El cual corresponde a las mediciones de las semillas de 3 tipos de flores de iris (Kama, Rosa y Canadian), las cuales son:
+- área 
+- perimetro  
+- compacidad 
+- largo
+- ancho  
+- coeficiente de asimetría 
+- largo del surco.
+
+- Podemos obtener una descripción más detallada [acá](https://archive.ics.uci.edu/ml/datasets/seeds)
 
 ### Análisis de resultados
 
 Entrenamos la red con un 80% del dataset. Es decir, nuestra partición del dataset fue 80% para entrenamiento y 20% para testeo.
 
 Al entrenar la red obtuvimos el siguiente comportamiento:
+Error por época: 
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png)
+Accuracy por época: 
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png)
+Podemos observar que se cumnple lo esperado, es decir, el error va disminuyendo a medida que aumenta el número de épocas y por el contrario el porcetaje de aciertos va 
+aumentando a medida que aumenta el número de épocas.
 
-al evaluar en el dataset de testeo obtuvimos:
+Al evaluar en el dataset de testeo obtuvimos:
 - Un error MSE igual a 0.08950901338195494
 - un porcentaje de acierto igual a 0.8095238095238095
+Y la matriz de confusion para las 3 clases posibles es la siguiente
+               | 1             | 2             | 3      |
+:-------------:| :------------:|:-------------:|: -----:|
+         1     | 7             | 2             |   2    |
+         2     |  0            | 14            |   0    |
+         3     |   4           | 0             |    13  |
 
 Los aprendizajes realizados en el desarrollo de esta tarea pueden resumirse en lo siguiente:
 - Fue complejo generar los métodos de back propagation de manera correcta
