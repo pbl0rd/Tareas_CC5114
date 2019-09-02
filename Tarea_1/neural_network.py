@@ -226,7 +226,7 @@ class NeuralNetwork(object):
     # correspondiente a ese input. Retorna  la respuesta dada por la red, el error comentido y si se considera como
     # acierto tal respuesta.
     def train(self, x: np.ndarray, y: np.ndarray):
-        res, layers_out = self.feed(x)
+        res, layers_out = self.feed(x)  # obtenemos las salidas del codigo
         grads = self.back_prop(layers_out, y)
         new_weights, new_bias = self.upd_params(x, layers_out, grads)
         self.set_weights(new_weights)
@@ -281,19 +281,19 @@ class NeuralNetwork(object):
     # Retorna un vector con la respuesta dada por la red a cada uno de los ejemplos, el error total promedio y
     # el porcentaje de aciertos logrado.
     def eval(self, test_x, test_y):
-        preds = []
+        preds = []  # arreglo donde guardaremos las predicciones de la red
         error_final = 0
         accuracy = 0
-        for i in range(len(test_x)):
-            res, layers_out = self.feed(test_x[i])
+        for i in range(len(test_x)):  # para cada ejemplo del dataset de testeo
+            res, layers_out = self.feed(test_x[i])  # obtenemos la predicción
             preds.append(res)
             ans = np.array(test_y[i])
             ans_hat = np.array(res)
-            diff = ans - ans_hat
-            error = np.dot(diff, diff) / len(diff)
-            ans_hat_acc = np.eye(1, len(ans), int(np.argmax(res)))[0]
+            diff = ans - ans_hat  # calculamos la diferencia entre la etiqueta y la predicción
+            error = np.dot(diff, diff) / len(diff)  # calculamos el error MSE
+            ans_hat_acc = np.eye(1, len(ans), int(np.argmax(res)))[0]  # obtenemos la interpretación de la predicción
             diff_acc = ans - ans_hat_acc
-            error_acc = np.dot(diff_acc, diff_acc) / len(diff_acc)
+            error_acc = np.dot(diff_acc, diff_acc) / len(diff_acc)  # calculamos el error para la accuracy
             if error_acc == 0.0:
                 acierto = 1
             else:

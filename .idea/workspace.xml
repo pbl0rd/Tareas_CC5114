@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f696be95-dd68-4ca5-888d-077de4e46dd4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Tarea_1/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Tarea_1/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tarea_1/neural_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tarea_1/neural_network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tarea_1/test_neural_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tarea_1/test_neural_network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tarea_1/test_neuron_layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tarea_1/test_neuron_layer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +43,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tarea_1">
+  <component name="RunManager" selected="Python tests.Unittests in test_neural_network.py">
     <configuration name="tarea_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Tareas_CC5114" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -60,6 +63,34 @@
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in test_neural_network.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Tareas_CC5114" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tarea_1" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/Tarea_1/test_neural_network.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in test_neuron_layer.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Tareas_CC5114" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tarea_1" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/Tarea_1/test_neuron_layer.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <configuration name="Unittests in test_neuron.py (1)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -90,41 +121,13 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests in test_sigmoid.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="Tareas_CC5114" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_sigmoid.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests in test_step.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="Tareas_CC5114" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_step.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests in test_neural_network.py" />
+        <item itemvalue="Python tests.Unittests in test_neuron_layer.py" />
         <item itemvalue="Python.tarea_1" />
         <item itemvalue="Python tests.Unittests in test_neuron.py (1)" />
         <item itemvalue="Python tests.Unittests in test_neuron.py" />
-        <item itemvalue="Python tests.Unittests in test_sigmoid.py" />
-        <item itemvalue="Python tests.Unittests in test_step.py" />
       </list>
     </recent_temporary>
   </component>
