@@ -23,15 +23,49 @@ Se recomienda descargar la distribución anaconda desde [aquí](https://repo.ana
 Luego podemos ejecutar el comando `pip install seaborn`
 
 ### Análisis de resultados
-Primer Ejercicio: (Secuencia de bits) Dada una secuencia de bits, se pide que el algoritmo encuentre la secuencia.
-Para este problema un individuo consiste en un diccionario de genes de largo igual al de la secuencia entregada, donde cada gen es un bit.
-El fitness de un individuo corresponde a un ponderador por el valor absoluto de la diferencia entre el número entero que representa la secuencia entregada y el número entero que representa la secuencia del individuo.
+Primer Ejercicio: (Secuencia de bits) Dada una secuencia de bits, se pide que el algoritmo encuentre dicha secuencia.
 
-Mejora de fitness por generación: 
+Para este problema un individuo consiste en un diccionario de genes de largo igual al de la secuencia entregada, donde cada gen es un bit (0 o 1).
+
+El fitness de un individuo corresponde a un ponderador por el valor absoluto de la diferencia entre el número entero que representa la secuencia entregada y 
+el número entero que representa la secuencia del individuo.
+
+Se ejecuta una prueba del algoritmo para encontrar la secuencia 00101010110101.
+
+Mejora de fitness por generación: Se ejecuta el algoritmo durante 100 iteraciones, tasa de mutación = 0.1, usando torneo con 5 competidores, tamaño de población igual a 50 y sin elitismo.
 
 ![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_2/Images/Fitness_por_Generacion_EX1.png)
 
-El gráfico anterior muestra la evolución del fitness (máximo, promedio y mínimo) a medida que avanzan las generaciones. Se puede observar que ya a partir de aproximadamente la iteración/generación 10 el fitness máximo (verde) se estanca en las cercanías de 0. Se puede notar también que el fitness promedio (azul) sube rápidamente en las primeras generaciones y después se mantiene oscilando en un arngo acotado.
+El gráfico anterior muestra la evolución del fitness (máximo, promedio y mínimo) a medida que avanzan las generaciones. 
+Se puede observar que ya a partir de aproximadamente la iteración/generación 10 el fitness máximo (verde) se estanca en las cercanías de 0. 
+Se puede notar también que el fitness promedio (azul) sube rápidamente en las primeras generaciones y después se mantiene oscilando en un rango acotado.
+Por último, el fitness mínimo (rojo) mantiene una oscilación descontrolada a lo largo de las iteraciones.
+
+Segundo Ejercicio: (Encontrar una palabra o frase) Dada una frase, se pide que el algoritmo encuentre dicha frase.
+
+Para este problema un individuo consiste en un diccionario de genes de largo igual al número de letras (incluyendo espacios) de la frase entregada, 
+donde cada gen es un letra (esta letra puede ser mayúscula, minúscula o un espacio).
+
+El fitness de un individuo corresponde al número de coincidencias entre la frase entregada y la frase formada por los genes del individuo. 
+'helloworld'.
+
+Mejora de fitness por generación: Se ejecuta el algoritmo durante 100 iteraciones, tasa de mutación = 0.2, usando torneo con 5 competidores, tamaño de población igual a 50 y sin elitismo.
+
+![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_2/Images/Fitness_por_Generacion_EX2.png)
+
+El gráfico anterior muestra la evolución del fitness (máximo, promedio y mínimo) a medida que avanzan las generaciones. 
+Se puede observar que cerca de la iteración/generación 30 el fitness máximo (verde) alcanza el valor máximo 10, es decir, encuentra la frase pedida y después este individuo desaparece de la población. 
+Se puede notar también que las 3 curvas suben velozmente en un principio y luego empiezan oscilar en torno a un rango acotado. 
+
+Mejora de fitness por generación: Se ejecuta el algoritmo durante 100 iteraciones, tasa de mutación = 0.2, usando torneo con 5 competidores, tamaño de población igual a 50 y tasa de elitismo 0.2.
+
+![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_2/Images/Fitness_por_Generacion_EX2_Elitismo.png)
+
+A diferencia del caso anterior, en este se ocupó una tasa de elitismo, lo que se ve reflejado en  que el la curva del fitness máximo es no decreciente. 
+Cabe resaltar que la subida es levemente más lenta y que el máximo del fitness (se encuentra la frase) se alcanza cerca de la generación 70. 
+Sin embargo, el rango de oscilación de las demás curvas se encuentra en un nivel más elevado y es más controlado que en el caso anterior. Por último, se ve que una vez encontrada la solución
+está no se pierda a diferencia del caso sin elitismo. 
+
 Heatmap de configuraciones: 
 
 ![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_2/Images/Heatmap.png)
