@@ -1,6 +1,3 @@
-import numpy as np
-
-
 class GENALG(object):
     # Método inicializador para la clase algoritmo genético 
 
@@ -112,7 +109,11 @@ class GENALG(object):
             if np.random.rand() > self.__mut_rate:
                 new_vals.append(vals[i])
             else:
-                new_val = self.__cr_genes(self.__indv_chars[i]['gene_type'],self.__indv_chars[i]['fact_range'])
+                cond = True
+                while cond:
+                    new_val = self.__cr_genes(self.__indv_chars[i]['gene_type'],self.__indv_chars[i]['fact_range'])
+                    if new_val != vals[i]:
+                        cond = False
                 new_vals.append(new_val)
         keys = list(indv.keys())
         new_ind = dict(zip(keys, new_vals))
@@ -154,3 +155,5 @@ class GENALG(object):
             if self.__max_fitness >= self.__term_cond['max_fitness'] and goal_cross == -1:
                 goal_cross = iters
         return generations, goal_cross, overall_max_fitness, overall_fittest_indv
+    
+    
