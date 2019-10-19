@@ -23,7 +23,8 @@ Se recomienda descargar la distribución anaconda desde [aquí](https://repo.ana
 Luego podemos ejecutar el comando `pip install seaborn`
 
 ### Análisis de resultados
-Primer Ejercicio: (Secuencia de bits) Dada una secuencia de bits, se pide que el algoritmo encuentre dicha secuencia.
+
+## Primer Ejercicio: (Secuencia de bits) Dada una secuencia de bits, se pide que el algoritmo encuentre dicha secuencia.
 
 Para este problema un individuo consiste en un diccionario de genes de largo igual al de la secuencia entregada, donde cada gen es un bit (0 o 1).
 
@@ -41,7 +42,7 @@ Se puede observar que ya a partir de aproximadamente la iteración/generación 1
 Se puede notar también que el fitness promedio (azul) sube rápidamente en las primeras generaciones y después se mantiene oscilando en un rango acotado.
 Por último, el fitness mínimo (rojo) mantiene una oscilación descontrolada a lo largo de las iteraciones.
 
-Segundo Ejercicio: (Encontrar una palabra o frase) Dada una frase, se pide que el algoritmo encuentre dicha frase.
+## Segundo Ejercicio: (Encontrar una palabra o frase) Dada una frase, se pide que el algoritmo encuentre dicha frase.
 
 Para este problema un individuo consiste en un diccionario de genes de largo igual al número de letras (incluyendo espacios) de la frase entregada, 
 donde cada gen es un letra (esta letra puede ser mayúscula, minúscula o un espacio).
@@ -67,11 +68,8 @@ Cabe resaltar que la subida es levemente más lenta y que el máximo del fitness
 Sin embargo, el rango de oscilación de las demás curvas se encuentra en un nivel más elevado y es más controlado que en el caso anterior. Por último, se ve que una vez encontrada la solución
 está no se pierda a diferencia del caso sin elitismo. 
 
-Heatmap de configuraciones: 
 
-![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_2/Images/Heatmap_EX2.png)
-
-Tercer Ejercicio: (Unbound-Knapsack) Problema de optimización combinatorial que consiste en que se dispone de una mochila la cual tiene una capacidad máxima establecida, y un 
+## Tercer Ejercicio: (Unbound-Knapsack) Problema de optimización combinatorial que consiste en que se dispone de una mochila la cual tiene una capacidad máxima establecida, y un 
 set de items con distinto valor y peso. El problema consiste en determinar cuántos items de cada tipo llevar en la mochila con tal de maximizar la utilidad obtenida de estos sin sobrepasar
 la capacidad de la mochila. Se llama Unbound porque se puede poner la cantidad de veces que uno quiera el mismo item (solo sujeto a la capacidad de la mochila). 
 Más información sobre el problema [aquí](https://en.wikipedia.org/wiki/Knapsack_problem)
@@ -93,17 +91,20 @@ Mejora de fitness por generación: Se ejecuta el algoritmo durante 100 iteracion
 
 ![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_2/Images/Fitness_por_Generacion_EX3.png)
 
-A diferencia del caso anterior, en este se ocupó una tasa de elitismo, lo que se ve reflejado en  que el la curva del fitness máximo es no decreciente. 
-Cabe resaltar que la subida es levemente más lenta y que el máximo del fitness (se encuentra la frase) se alcanza cerca de la generación 70. 
-Sin embargo, el rango de oscilación de las demás curvas se encuentra en un nivel más elevado y es más controlado que en el caso anterior. Por último, se ve que una vez encontrada la solución
-está no se pierda a diferencia del caso sin elitismo. 
+Se puede observar que el comportamiento de las curvas es similar al exhibido en los ejercicios anteriores, las curvas de máximo fitness y fitness promedio suben velozmente y se mueven en un rango acotado cercano al 0. jercicios anteriores A diferencia del caso anterior, en este se ocupó una tasa de elitismo, lo que se ve reflejado en  que el la curva del fitness máximo es no decreciente. 
+Cabe resaltar que el máximo del fitness (se encuentra la solución del probelma) se alcanza cerca de la generación 85. Por último, la curva de fitness mínimo sube ligeramente al principio y se estanca variando en torno al -8.
 
-Heatmap de configuraciones: 
-
+Heatmap de configuraciones: Se ejecuta el algoritmo fijando el umbral de fitness en 0.36 (cuando se encuentra la solución) usando torneo con 5 competidores, y tasa de elitismo 0.2. 
+Esto para cada combinación de tasa de mutación en [0.0, 0.1, ..., 0.9, 1.0] y tamaño de población en [50, 100, 150, ..., 900, 950 , 1000]
 
 ![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_2/Images/Heatmap_EX3.png)
 
+En el gráfico se muestra el número de la generación en la cual se encuentra la solución del problema al ejecutar el algoritmo con la combinación tasa de mutación y tamaño de población correspondiente.
+Se puede notar que a medida que aumenta el tamaño de población la tasa de mutación se vuelve menos importante. 
+También se puede notar que en valores extremos de la tasa de mutación (0.0 y 1.0) el comportamiento no es idóneo ya sea porque no hay mucho cambio o por la volatilidad excesiva.
+
 Los aprendizajes realizados en el desarrollo de esta tarea pueden resumirse en lo siguiente:
  - El algoritmo genético se puede implementar de forma que tenga la flexibilidad de adaptarse a una gran cantidad de aplicaciones. Como se pudo observar, solo cambiando levemente 
- el modelamiento de los individuos y de la función de fitness se puede resolver una gran gama de problemas de distinta í.ndole
+ el modelamiento de los individuos y de la función de fitness se puede resolver una gran gama de problemas de distinta índole.
+ - En particular, se visualiza inmensa utilidad para resolver problemas en los que la cantidad de combinaciones posibles para formar soluciones crece exponencialmente, tales como el problema del vendedor viajero.
  - La implementación realizada permite modificaciones futuras con el fin de añadir nuevas formas de selección y reproducción que pueden ser útiles para ciertas aplicaciones.
