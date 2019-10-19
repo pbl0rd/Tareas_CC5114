@@ -103,7 +103,7 @@ Esto para cada combinación de tasa de mutación en [0.0, 0.1, ..., 0.9, 1.0] y 
 ![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_2/Images/Heatmap_EX3.png)
 
 En el gráfico se muestra el número de la generación en la cual se encuentra la solución del problema al ejecutar el algoritmo con la combinación tasa de mutación y tamaño de población correspondiente. 
-Notar que las casillas con el número 20000 corresponden a configuraciones que no lograron encontrar algún individuo que alcance o supere el umbral establecido, en este caso esto significa que no pudieron encontrar la solución.
+Notar que las casillas con el número 20000 corresponden a configuraciones que no lograron encontrar algún individuo que alcance o supere el umbral establecido, en este caso, esto significa que no pudieron encontrar la solución.
 Se puede observar que a medida que aumenta el tamaño de población la tasa de mutación se vuelve menos importante. 
 También se puede notar que en valores extremos de la tasa de mutación (0.0 y 1.0) el comportamiento no es idóneo ya sea porque no hay mucho cambio o por la volatilidad excesiva.
 
@@ -111,4 +111,7 @@ Los aprendizajes realizados en el desarrollo de esta tarea pueden resumirse en l
  - El algoritmo genético se puede implementar de forma que tenga la flexibilidad de adaptarse a una gran cantidad de aplicaciones. Como se pudo observar, solo cambiando levemente 
  el modelamiento de los individuos y de la función de fitness se puede resolver una gran gama de problemas de distinta índole.
  - En particular, se visualiza inmensa utilidad para resolver problemas en los que la cantidad de combinaciones posibles para formar soluciones crece exponencialmente, tales como el problema del vendedor viajero.
- - La implementación realizada permite modificaciones futuras con el fin de añadir nuevas formas de selección y reproducción que pueden ser útiles para ciertas aplicaciones.
+ - La implementación realizada permite modificaciones futuras con el fin de añadir nuevas formas de selección y reproducción que pueden ser útiles para ciertas aplicaciones. 
+   Por ejemplo, si modificamos la forma de modelar a los individuos del problema 3, ahora teniendo un rango de valore factibles para cada gen en particular, es decir, el número de cajas posibles del tipo i va a variar entre 0 y la función piso de capacidad/peso_i .
+   Para esto, también debemos quitar la restricción de la función de creación de genes. Al hacer esto, el heatmap de configuraciones mejora significativamente resultando en que en la mayoría de los casos la solución se encuentra adentro de la población inicial
+   ![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_2/Images/Heatmap_EX3_1.png)
