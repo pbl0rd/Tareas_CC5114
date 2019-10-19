@@ -1,7 +1,7 @@
 INFORME TAREA 2
 ================
 
-### Consideraciones
+## Consideraciones
 
 - En esta tarea se implementó un algoritmo genético. 
 - La implementación se realizó creando una clase GENALG. Esta recibe como entrada el tamaño de la población, función de fitness, función de creacion de genes, función de creación de individuos, diccionario que caracteriza a un individuo, diccionario con la condición de parada, tasa de mutación y una tasa de elitismo
@@ -12,7 +12,7 @@ INFORME TAREA 2
 
 
 
-### Instrucciones
+## Instrucciones
 
 - El lenguaje ocupado para el desarrollo de esta tarea es Python 3.7 en Windows. 
 Se recomienda descargar la distribución anaconda desde [aquí](https://repo.anaconda.com/archive/Anaconda3-2019.07-Windows-x86_64.exe) ya que al usar esta distribución no será necesario instalar las librerías por separado.
@@ -22,9 +22,10 @@ Se recomienda descargar la distribución anaconda desde [aquí](https://repo.ana
 - Para instalar seaborn debemos asegurarnos de tener instalado previamente numpy, matplotlib, pandas y scipy por lo que debemos primero ejecutar los comandos (en caso de no tener instalados estos últimos) `pip install pandas` y `pip install scipy`. 
 Luego podemos ejecutar el comando `pip install seaborn`
 
-### Análisis de resultados
+## Análisis de resultados
 
-## Primer Ejercicio: (Secuencia de bits) Dada una secuencia de bits, se pide que el algoritmo encuentre dicha secuencia.
+### Primer Ejercicio: (Secuencia de bits) 
+Dada una secuencia de bits, se pide que el algoritmo encuentre dicha secuencia.
 
 Para este problema un individuo consiste en un diccionario de genes de largo igual al de la secuencia entregada, donde cada gen es un bit (0 o 1).
 
@@ -42,7 +43,8 @@ Se puede observar que ya a partir de aproximadamente la iteración/generación 1
 Se puede notar también que el fitness promedio (azul) sube rápidamente en las primeras generaciones y después se mantiene oscilando en un rango acotado.
 Por último, el fitness mínimo (rojo) mantiene una oscilación descontrolada a lo largo de las iteraciones.
 
-## Segundo Ejercicio: (Encontrar una palabra o frase) Dada una frase, se pide que el algoritmo encuentre dicha frase.
+### Segundo Ejercicio: (Encontrar una palabra o frase) 
+Dada una frase, se pide que el algoritmo encuentre dicha frase.
 
 Para este problema un individuo consiste en un diccionario de genes de largo igual al número de letras (incluyendo espacios) de la frase entregada, 
 donde cada gen es un letra (esta letra puede ser mayúscula, minúscula o un espacio).
@@ -69,9 +71,10 @@ Sin embargo, el rango de oscilación de las demás curvas se encuentra en un niv
 está no se pierda a diferencia del caso sin elitismo. 
 
 
-## Tercer Ejercicio: (Unbound-Knapsack) Problema de optimización combinatorial que consiste en que se dispone de una mochila la cual tiene una capacidad máxima establecida, y un 
-set de items con distinto valor y peso. El problema consiste en determinar cuántos items de cada tipo llevar en la mochila con tal de maximizar la utilidad obtenida de estos sin sobrepasar
-la capacidad de la mochila. Se llama Unbound porque se puede poner la cantidad de veces que uno quiera el mismo item (solo sujeto a la capacidad de la mochila). 
+### Tercer Ejercicio: (Unbound-Knapsack) 
+Problema de optimización combinatorial que consiste en que se dispone de una mochila la cual tiene una capacidad máxima establecida, y un set de items con distinto valor y peso.
+El problema consiste en determinar cuántos items de cada tipo llevar en la mochila con tal de maximizar la utilidad obtenida de estos sin sobrepasar la capacidad de la mochila. 
+Se llama Unbound porque se puede poner la cantidad de veces que uno quiera el mismo item (solo sujeto a la capacidad de la mochila). 
 Más información sobre el problema [aquí](https://en.wikipedia.org/wiki/Knapsack_problem)
 
 Para este problema se modeló a un individuo como en un diccionario de genes de largo igual al número de items distintos disponibles en el set (en este caso, existen 5 tipos de cajas), 
@@ -94,13 +97,14 @@ Mejora de fitness por generación: Se ejecuta el algoritmo durante 100 iteracion
 Se puede observar que el comportamiento de las curvas es similar al exhibido en los ejercicios anteriores, las curvas de máximo fitness y fitness promedio suben velozmente y se mueven en un rango acotado cercano al 0. jercicios anteriores A diferencia del caso anterior, en este se ocupó una tasa de elitismo, lo que se ve reflejado en  que el la curva del fitness máximo es no decreciente. 
 Cabe resaltar que el máximo del fitness (se encuentra la solución del probelma) se alcanza cerca de la generación 85. Por último, la curva de fitness mínimo sube ligeramente al principio y se estanca variando en torno al -8.
 
-Heatmap de configuraciones: Se ejecuta el algoritmo fijando el umbral de fitness en 0.36 (cuando se encuentra la solución) usando torneo con 5 competidores, y tasa de elitismo 0.2. 
+Heatmap de configuraciones: Se ejecuta el algoritmo fijando el umbral de fitness en 0.36 (cuando se encuentra la solución) (y forzando a terminar el algoritmo si se superan las 10000 generaciones) usando torneo con 5 competidores, y tasa de elitismo 0.2. 
 Esto para cada combinación de tasa de mutación en [0.0, 0.1, ..., 0.9, 1.0] y tamaño de población en [50, 100, 150, ..., 900, 950 , 1000]
 
 ![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_2/Images/Heatmap_EX3.png)
 
-En el gráfico se muestra el número de la generación en la cual se encuentra la solución del problema al ejecutar el algoritmo con la combinación tasa de mutación y tamaño de población correspondiente.
-Se puede notar que a medida que aumenta el tamaño de población la tasa de mutación se vuelve menos importante. 
+En el gráfico se muestra el número de la generación en la cual se encuentra la solución del problema al ejecutar el algoritmo con la combinación tasa de mutación y tamaño de población correspondiente. 
+Notar que las casillas con el número 20000 corresponden a configuraciones que no lograron encontrar algún individuo que alcance o supere el umbral establecido, en este caso esto significa que no pudieron encontrar la solución.
+Se puede observar que a medida que aumenta el tamaño de población la tasa de mutación se vuelve menos importante. 
 También se puede notar que en valores extremos de la tasa de mutación (0.0 y 1.0) el comportamiento no es idóneo ya sea porque no hay mucho cambio o por la volatilidad excesiva.
 
 Los aprendizajes realizados en el desarrollo de esta tarea pueden resumirse en lo siguiente:

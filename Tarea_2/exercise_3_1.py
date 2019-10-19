@@ -114,7 +114,7 @@ if __name__ == '__main__':
     cr_genes = gene_factory_ex3
     cr_indv = indv_factory
     elitism_rate = 0.2
-    term_cond = {'type': 'fitness_th', 'fitness_th': 0.36, 'iters': 3000}
+    term_cond = {'type': 'fitness_th', 'fitness_th': 0.36, 'iters': 10000}
     indv_chars = {}
     for i in range(len(pesos)):
         aux_dict = {}
