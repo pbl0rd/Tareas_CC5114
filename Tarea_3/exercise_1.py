@@ -4,7 +4,7 @@ from genetic_algorithm_mod import GENALG
 import matplotlib.pyplot as plt
 from ast import AST
 from arboles import *
-import seaborn as sns
+
 
 
 # Función para crear los genes (nddos) de los individuos. Recibe 2 inputs:
@@ -32,9 +32,10 @@ def indv_factory(gene_factory_, indv_chars_):
     return new_indv.copy()  # retornamos el individuo creado
 
 
-# Función de fitness para el ejercicio 1. Recibe a un individuo y un diccionario con la secuencia y un ponderador.
-# Retorna la multiplicación del ponderador y el valor absoluto de la diferencia entre el número entero que representa
-# la secuencia entregada y el número entero que representa la secuencia del individuo.
+# Función de fitness para el ejercicio 1. Recibe a un individuo y un diccionario con el número a encontrar y
+# un ponderador.
+# Retorna el opuesto de la multiplicación del ponderador y el valor absoluto de la diferencia entre el número a
+# encontrar y el número correspondiente a la evaluación del individuo (árbol).
 def fitness_ex1(indv, objective):
     val = indv.eval()
     fitness = objective['ponderador'] * abs(objective['secuencia'] - val)
@@ -45,7 +46,7 @@ if __name__ == '__main__':
     # Ejercicio 2.1.1
     # Seteamos los parametros a ser ocupados por el algoritmo para obtener los gráficos pedidos
     secuencia_bits = 65346
-    ponderador = 1 / 100
+    ponderador = 1 / 10000
     fit_params = {'secuencia': secuencia_bits, 'ponderador': ponderador}
     pop_sz_0 = 30
     fit_fn = fitness_ex1

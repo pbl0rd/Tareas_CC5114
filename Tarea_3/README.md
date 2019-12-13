@@ -4,7 +4,7 @@ INFORME TAREA 3
 ## Consideraciones
 
 - En esta tarea se implementaron técnicas de programación genética. 
-- La implementación se realizó creando una clase GENALG. Esta recibe como entrada el tamaño de la población, función de fitness, función de creacion de genes, función de creación de individuos, diccionario que caracteriza a un individuo, diccionario con la condición de parada, tasa de mutación y una tasa de elitismo
+- La modificó la implementación de la clase GENALG (TAREA 2) correspondiente al algoritmo genético para que pueda. Esta recibe como entrada el tamaño de la población, función de fitness, función de creacion de genes, función de creación de individuos, diccionario que caracteriza a un individuo, diccionario con la condición de parada, tasa de mutación y una tasa de elitismo
 - Se implementaron dos métodos para realizar la selección: mediante ruleta o mediante torneo. El metodo a usar se puede elegir al hacer correr al algoritmo.
 - Se permite fijar el número de competidores en el método de torneo si se elige para realizar la selección.
 - Se permite elegir la condición de finalización del algoritmo: ya sea por alcanzar un número determinado de iteraciones o por alcanzar un umbral de fitness.
@@ -25,8 +25,8 @@ Luego podemos ejecutar el comando `pip install seaborn`
 
 ## Análisis de resultados
 
-### Primer Ejercicio: (Secuencia de bits) 
-Dada una secuencia de bits, se pide que el algoritmo encuentre dicha secuencia.
+### Primer Ejercicio: (Encontrar Número) 
+Dada un número, se pide que el algoritmo encuentre una expresión que se acerque a este usando solamentedicha secuencia.
 
 Para este problema un individuo consiste en un diccionario de genes de largo igual al de la secuencia entregada, donde cada gen es un bit (0 o 1).
 
@@ -37,7 +37,7 @@ Se ejecuta una prueba del algoritmo para encontrar la secuencia 00101010110101.
 
 Mejora de fitness por generación: Se ejecuta el algoritmo durante 100 iteraciones, tasa de mutación = 0.1, usando torneo con 5 competidores, tamaño de población igual a 50 y sin elitismo.
 
-![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_2/Images/Fitness_por_Generacion_EX1.png)
+![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Fitness_por_Generacion_EX1.png)
 
 El gráfico anterior muestra la evolución del fitness (máximo, promedio y mínimo) a medida que avanzan las generaciones. 
 Se puede observar que ya a partir de aproximadamente la iteración/generación 10 el fitness máximo (verde) se estanca en las cercanías de 0. 
@@ -56,7 +56,7 @@ Se ejecuta una prueba del algoritmo para encontrar la frase 'helloworld'.
 
 Mejora de fitness por generación: Se ejecuta el algoritmo durante 100 iteraciones, tasa de mutación = 0.2, usando torneo con 5 competidores, tamaño de población igual a 50 y sin elitismo.
 
-![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_2/Images/Fitness_por_Generacion_EX2.png)
+![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Fitness_por_Generacion_EX2.png)
 
 El gráfico anterior muestra la evolución del fitness (máximo, promedio y mínimo) a medida que avanzan las generaciones. 
 Se puede observar que cerca de la iteración/generación 30 el fitness máximo (verde) alcanza el valor máximo 10, es decir, encuentra la frase pedida y después este individuo desaparece de la población. 
