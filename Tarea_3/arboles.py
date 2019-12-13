@@ -2,8 +2,6 @@
 # para crear copias de los arboles
 from copy import deepcopy
 
-import numpy as np
-
 
 # esta funcion dice si el argumento es una funcion o no
 def is_function(f):
@@ -28,7 +26,9 @@ class Node:
         self.num_arguments = function.__code__.co_argcount
         self.arguments = []
 
-    # funcion para evaluar un nodo (calcular el resultado)
+    # funcion para evaluar un nodo (calcular el resultado). Modificación: Opcionalmente puede recibir un diccionario
+    # de valores para poder evaluar las variables en caso de incorporarlas como posibilidad de nodo terminal.
+    # También envía un error en caso de que un nodo de división este dividiendo por 0
     def eval(self, vals=None):
         # es importante chequear que los argumentos que nos dieron
         # coincidan con los argumentos que necesitamos
@@ -42,13 +42,15 @@ class Node:
         # esto se llama `unpacking`.
         # lo necesitamos porque nuestra funcion recibe N argumentos
         # no una lista de tamaño N.
-        if vals is None:
-            return self.operation(*[node.eval() for node in self.arguments])
-        else:
-            return self.operation(*[node.eval(vals) for node in self.arguments])
+        try:
+            if vals is None:
+                return self.operation(*[node.eval() for node in self.arguments])
+            else:
+                return self.operation(*[node.eval(vals) for node in self.arguments])
+        except:
+            raise ValueError("árbol inválido por división por cero")
 
-            # hace una lista con todos los hijos
-
+    # hace una lista con todos los hijos
     def serialize(self):
         l = [self]
         for node in self.arguments:
@@ -130,7 +132,7 @@ class MultNode(BinaryNode):
     def __repr__(self):
         return "({} * {})".format(*self.arguments)
 
-
+# Agregamos un nodo de division similar al nodo de multiplicación.
 class DivNode(BinaryNode):
     def __init__(self, left, right):
         def _div(x, y):
@@ -158,6 +160,9 @@ class TerminalNode(Node):
     def __repr__(self):
         return str(self.value)
 
+    # se modifica la evaluación de los nodos terminales para el caso de variables.
+    # Opcionalmente admite un diccionario de valores para devolver el valor del nodo en caso que este corresponda a
+    # una variable
     def eval(self, vals=None):
         try:
             return float(self.value)

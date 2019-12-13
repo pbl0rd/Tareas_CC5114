@@ -3,13 +3,11 @@ INFORME TAREA 3
 
 ## Consideraciones
 
-- En esta tarea se implementaron técnicas de programación genética. 
-- La modificó la implementación de la clase GENALG (TAREA 2) correspondiente al algoritmo genético para que pueda. Esta recibe como entrada el tamaño de la población, función de fitness, función de creacion de genes, función de creación de individuos, diccionario que caracteriza a un individuo, diccionario con la condición de parada, tasa de mutación y una tasa de elitismo
-- Se implementaron dos métodos para realizar la selección: mediante ruleta o mediante torneo. El metodo a usar se puede elegir al hacer correr al algoritmo.
-- Se permite fijar el número de competidores en el método de torneo si se elige para realizar la selección.
-- Se permite elegir la condición de finalización del algoritmo: ya sea por alcanzar un número determinado de iteraciones o por alcanzar un umbral de fitness.
-- A pesar de no ser necesario para los ejercicios resueltos se deja la posibilidad de construir individuos cuyos genes son de diversos tipos.
+- En esta tarea se implementaron técnicas de programación genética. Un algoritmo de programación tiene 3 componentes: librería de árboles, generador aleatorio de árboles y un algoritmo genético adaptado.
 
+- Se utilizó como librería de árboles, la librería arboles.py disponible en el material del curso. Se le realizaron 2 modificaciones: Se agregó un nodo de división y se modificó el método de evaluación de los árboles.
+- Se utilizó como generador aleatorio de arboles ast.py disponible en el material del curso. Solo se modificó el uso de la librería random por el modulo random de numpy.
+- Se modificó la implementación de la clase GENALG (TAREA 2) correspondiente al algoritmo genético. Esencialmente se modificaron solo dos cosas el método crossover y la mutación, adaptando ambos ahora para poder trabajar con árboles.
 
 
 ## Instrucciones
@@ -24,95 +22,124 @@ Se recomienda descargar la distribución anaconda desde [aquí](https://repo.ana
 Luego podemos ejecutar el comando `pip install seaborn`
 
 ## Análisis de resultados
+Para todos los problemas que se analizarán un individuo consiste en un árbol, solo se diferencian en los terminales y las funciones que los componen.
 
-### Primer Ejercicio: (Encontrar Número) 
-Dada un número, se pide que el algoritmo encuentre una expresión que se acerque a este usando solamentedicha secuencia.
+### Encontrar Número 
+Dada un número, se pide que el algoritmo encuentre una expresión que se acerque a este usando solamente un conjunto de valores y funciones reducido. Se resolverán 3 variantes de este problema.
 
-Para este problema un individuo consiste en un diccionario de genes de largo igual al de la secuencia entregada, donde cada gen es un bit (0 o 1).
+### Ejercicio 1 (2.1.1) Encontrar número sin límite de repeticiones
+Se debe ocupar las funciones {+,-,*,max(.)} y los terminales {25,7,8,100,4,2} pudiendo repetir los terminales sin restricción.
 
-El fitness de un individuo corresponde a un ponderador por el valor absoluto de la diferencia entre el número entero que representa la secuencia entregada y 
-el número entero que representa la secuencia del individuo.
+El fitness de un individuo corresponde al opuesto de un ponderador por el valor absoluto de la diferencia entre el número a encontrar y el número correspondiente a la evaluación del individuo (árbol).
 
-Se ejecuta una prueba del algoritmo para encontrar la secuencia 00101010110101.
+Se ejecuta una prueba del algoritmo para encontrar el número 65346.
 
-Mejora de fitness por generación: Se ejecuta el algoritmo durante 100 iteraciones, tasa de mutación = 0.1, usando torneo con 5 competidores, tamaño de población igual a 50 y sin elitismo.
+Mejora de fitness por generación: Se ejecuta el algoritmo durante 200 iteraciones, tasa de mutación = 0.1, tasa de elitismo =0.1, usando torneo con 5 competidores, tamaño de población igual a 30. Para la generación de árboles se uso probabilidad de que un árbol deje de crecer =0.3 y máxima profundidad=10.
 
 ![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Fitness_por_Generacion_EX1.png)
 
 El gráfico anterior muestra la evolución del fitness (máximo, promedio y mínimo) a medida que avanzan las generaciones. 
+Se usaron 2 escalas una para el máximo y otra para el resto. Sin embargo, se puede observar que al incorporar el mínimo, dado que este tiene un rango de variación gigante, se pierde de vista como varían las otras curvas.
+Por esto se decidió hacer otro gráfico sin incorporar el fitness mínimo por generación.
+
+![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Fitness_por_Generacion_EX1_V2.png)
+
+El gráfico anterior muestra la evolución del fitness (máximo y promedio) a medida que avanzan las generaciones.
 Se puede observar que ya a partir de aproximadamente la iteración/generación 10 el fitness máximo (verde) se estanca en las cercanías de 0. 
 Se puede notar también que el fitness promedio (azul) sube rápidamente en las primeras generaciones y después se mantiene oscilando en un rango acotado.
 Por último, el fitness mínimo (rojo) mantiene una oscilación descontrolada a lo largo de las iteraciones.
 
-### Segundo Ejercicio: (Encontrar una palabra o frase) 
-Dada una frase, se pide que el algoritmo encuentre dicha frase.
+A partir de ahora, para términos de este informe, se utilizará este tipo de gráficos para mostrar la evolución del fitness (solo máximo y promedio), no obstante en el repositorio se encuentra la otra versión del gráfico
 
-Para este problema un individuo consiste en un diccionario de genes de largo igual al número de letras (incluyendo espacios) de la frase entregada, 
-donde cada gen es un letra (esta letra puede ser mayúscula, minúscula o un espacio).
+### Ejercicio 2 (2.1.2) Encontrar número sin límite de repeticiones
+Se debe ocupar las funciones {+,-,*,max(.)} y los terminales {25,7,8,100,4,2} pudiendo repetir los terminales sin restricción pero esta vez se castiga el tamaño de los árboles favoreciendo soluciones más pequeñas.
 
-El fitness de un individuo corresponde al número de coincidencias entre la frase entregada y la frase formada por los genes del individuo. 
+El fitness de un individuo corresponde el opuesto de la suma entre la multiplicación de un ponderador y el valor absoluto de la diferencia entre el número a encontrar y el número correspondiente a la evaluación del individuo (árbol), y la multiplicación de otro ponderador por el tamaño del árbol (considerado como el número de nodos).
 
-Se ejecuta una prueba del algoritmo para encontrar la frase 'helloworld'.
+Se ejecuta una prueba del algoritmo para encontrar el número 65346.
 
-Mejora de fitness por generación: Se ejecuta el algoritmo durante 100 iteraciones, tasa de mutación = 0.2, usando torneo con 5 competidores, tamaño de población igual a 50 y sin elitismo.
+Mejora de fitness por generación: Se ejecuta el algoritmo durante 200 iteraciones, tasa de mutación = 0.1, tasa de elitismo =0.1, usando torneo con 5 competidores, tamaño de población igual a 30. Para la generación de árboles se uso probabilidad de que un árbol deje de crecer =0.3 y máxima profundidad=10.
 
-![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Fitness_por_Generacion_EX2.png)
+![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Fitness_por_Generacion_EX2_V2.png)
+
+El gráfico anterior muestra la evolución del fitness (máximo y promedio) a medida que avanzan las generaciones.
+Se puede observar que ya a partir de aproximadamente la iteración/generación 10 el fitness máximo (verde) se estanca en las cercanías de 0. 
+Se puede notar también que el fitness promedio (azul) sube rápidamente en las primeras generaciones y después se mantiene oscilando en un rango acotado.
+Por último, el fitness mínimo (rojo) mantiene una oscilación descontrolada a lo largo de las iteraciones.
+
+### Ejercicio 3 (2.1.3) Encontrar número sin repetición
+Se debe ocupar las funciones {+,-,*} y los terminales {25,7,8,100,4,2} restringiendo a los árboles de modo que exista a lo más 1 de cada terminal en ellos.
+
+El fitness de un individuo corresponde al opuesto de la suma ponderada entre el valor absoluto de la diferencia entre el número a encontrar y el número correspondiente a la evaluación del individuo (árbol), y la suma de veces que el árbol viola la restricción de unicidad de los terminales.
+
+Se ejecuta una prueba del algoritmo para encontrar el número 65346.
+
+Mejora de fitness por generación: Se ejecuta el algoritmo durante 1000 iteraciones, tasa de mutación = 0.2, tasa de elitismo =0.1, usando torneo con 5 competidores, tamaño de población igual a 50. Para la generación de árboles se uso probabilidad de que un árbol deje de crecer =0.3 y máxima profundidad=10.
+
+![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Fitness_por_Generacion_EX3_V2.png)
+
+El gráfico anterior muestra la evolución del fitness (máximo y promedio) a medida que avanzan las generaciones.
+Se puede observar que ya a partir de aproximadamente la iteración/generación 10 el fitness máximo (verde) se estanca en las cercanías de 0. 
+Se puede notar también que el fitness promedio (azul) sube rápidamente en las primeras generaciones y después se mantiene oscilando en un rango acotado.
+Por último, el fitness mínimo (rojo) mantiene una oscilación descontrolada a lo largo de las iteraciones.
+
+### Implementar variables
+Para implementar variables se modificó el método de evaluación que venía en la librería de árboles. 
+Puntualmente se añadió la posibilidad de recibir un diccionario de valores para las variables, por ejemplo si las variables son 'x' e 'y' el método de evaluación ahora recibe como entrada un diccionario {'x':x_val, 'y':y_val}. Por defecto el método funciona sin diccionario de valores y por lo tanto se comporta igual que antes. En caso de recibir un diccionario como entrada entonces recursivamente evalua los nodos hijos entregandoles el diccionario.
+También fue necesario modificar este método de evaluación para los nodos terminales. De la misma manera ahora es posible entregarle un diccionario de valores como entrada. En este caso, el método intenta devolver el valor númerico del nodo (funciona si el nodo es númerico y falla en caso de que sea variable) y en caso de no poder (caso en que el nodo es una variable) busca el valor en el diccionario de entrada y devuelve ese valor.
+
+### Symbolic Regression
+Dada una ecuación, se pide que el algoritmo encuentre una expresión que obtenga el mismo valor que la ecuación buscada para un conjunto de puntos.
+
+### Ejercicio 4 (2.3): Encontrar una ecuación
+Se debe ocupar las funciones {+,-,*} y los terminales {-10,...,10,'x'} pudiendo repetir los terminales a gusto
+
+El fitness de un individuo corresponde al opuesto de la multiplicación de un ponderador por la suma para cada punto del intervalo de evaluación del valor absoluto de la diferencia entre el número correspondiente a la evaluación del individuo (árbol) y el valor de la función en el punto.
+
+Se ejecuta una prueba del algoritmo para encontrar la ecuación x**2+x-6 evaluada en [-100,...,100].
+
+Mejora de fitness por generación: Se ejecuta el algoritmo durante 100 iteraciones, tasa de mutación = 0.2, tasa de elitismo = 0.1, usando torneo con 5 competidores, tamaño de población igual a 50. Para la generación de árboles se uso probabilidad de que un árbol deje de crecer =0.3 y máxima profundidad=10.
+
+
+![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Fitness_por_Generacion_EX4_V2.png)
 
 El gráfico anterior muestra la evolución del fitness (máximo, promedio y mínimo) a medida que avanzan las generaciones. 
 Se puede observar que cerca de la iteración/generación 30 el fitness máximo (verde) alcanza el valor máximo 10, es decir, encuentra la frase pedida y después este individuo desaparece de la población. 
 Se puede notar también que las 3 curvas suben velozmente en un principio y luego empiezan oscilar en torno a un rango acotado. 
 
-Mejora de fitness por generación: Se ejecuta el algoritmo durante 100 iteraciones, tasa de mutación = 0.2, usando torneo con 5 competidores, tamaño de población igual a 50 y tasa de elitismo 0.2.
+### Implementar el nodo división
+Para implementar el nodo de división se modificó la librería de arboles agregando el nodo DivNode. También se modificó el método de evaluación que venía en la librería de árboles. Puntualmente se intenta realizar la evaluación tal como se describe arriba y en caso de no ser posible se eleva un error.
+Al modificar de esta forma para penalizar la división por cero en la función de fitness capturamos el error en caso de que se eleve y categorizamos al árbol como inviable gatillando una penalización en su fitness.
 
-![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_2/Images/Fitness_por_Generacion_EX2_Elitismo.png)
+### Ejercicio 5 (2.4.3): Encontrar una ecuación penalizando la división por cero
+Se debe ocupar las funciones {+,-,*,/} y los terminales {-10,...,10,'x'} pudiendo repetir los terminales a gusto
 
-A diferencia del caso anterior, en este se ocupó una tasa de elitismo, lo que se ve reflejado en  que el la curva del fitness máximo es no decreciente. 
-Cabe resaltar que la subida es levemente más lenta y que el máximo del fitness (se encuentra la frase) se alcanza cerca de la generación 70. 
-Sin embargo, el rango de oscilación de las demás curvas se encuentra en un nivel más elevado y es más controlado que en el caso anterior. Por último, se ve que una vez encontrada la solución
-está no se pierde, a diferencia del caso sin elitismo. 
+El fitness de un individuo corresponde al opuesto de la suma entre la multiplicación de un ponderador por la suma para cada punto del intervalo de evaluación del valor absoluto de la diferencia entre el número correspondiente a la evaluación del individuo (árbol) y el valor de la función en el punto, y  otro ponderador por un indicador de si el árbol es inviable o no ( es inviable si se divide por 0)
 
+Se ejecuta una prueba del algoritmo para encontrar la ecuación x**2+x-6 evaluada en [-100,...,100].
 
-### Tercer Ejercicio: (Unbound-Knapsack) 
-Problema de optimización combinatorial que consiste en que se dispone de una mochila la cual tiene una capacidad máxima establecida, y un set de items con distinto valor y peso.
-El problema consiste en determinar cuántos items de cada tipo llevar en la mochila con tal de maximizar la utilidad obtenida de estos sin sobrepasar la capacidad de la mochila. 
-Se llama Unbound porque se puede poner la cantidad de veces que uno quiera el mismo item (solo sujeto a la capacidad de la mochila). 
-Más información sobre el problema [aquí](https://en.wikipedia.org/wiki/Knapsack_problem)
+Mejora de fitness por generación: Se ejecuta el algoritmo durante 100 iteraciones, tasa de mutación = 0.2, tasa de elitismo = 0.1, usando torneo con 5 competidores, tamaño de población igual a 50. Para la generación de árboles se uso probabilidad de que un árbol deje de crecer =0.3 y máxima profundidad=10.
 
-Para este problema se modeló a un individuo como en un diccionario de genes de largo igual al número de items distintos disponibles en el set (en este caso, existen 5 tipos de cajas), 
-donde cada gen corresponde a la cantidad de items de ese tipo que se añadirán a la mochila (número entero entre 0 y un límite superior dado por la oferta de items y la capacidad de la mochila, en este caso 15).
+![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Fitness_por_Generacion_EX5_V2.png)
 
-El fitness de un individuo corresponde al valor obtenido por los items que se llevan en la mochila menos una penalización por cada kilo que sobrepase la capacidad de la mochila. 
-Este valor puede ser multiplicado por un ponderador para obtener un rango más acotado de valores y poder realizar mejores visualizaciones.
+El gráfico anterior muestra la evolución del fitness (máximo, promedio y mínimo) a medida que avanzan las generaciones. 
+Se puede observar que cerca de la iteración/generación 30 el fitness máximo (verde) alcanza el valor máximo 10, es decir, encuentra la frase pedida y después este individuo desaparece de la población. 
+Se puede notar también que las 3 curvas suben velozmente en un principio y luego empiezan oscilar en torno a un rango acotado. 
 
-El ejemplo a resolver consiste en: Una mochila de capacidad 15 kg. y 5 tipos de cajas distintas de las cuales elegir: 
-- Una de peso 12 y valor 4.
-- Otra de peso 2 y valor 2.
-- Otra con peso 1 y valor 2.
-- Otra con peso 1 y valor 1.
-- Por último, una con peso 4 y valor 10.
-
-Mejora de fitness por generación: Se ejecuta el algoritmo durante 100 iteraciones, tasa de mutación = 0.2, usando torneo con 5 competidores, tamaño de población igual a 50 y tasa de elitismo 0.2.
-
-![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_2/Images/Fitness_por_Generacion_EX3.png)
-
-Se puede observar que el comportamiento de las curvas es similar al exhibido en los ejercicios anteriores, las curvas de máximo fitness y fitness promedio suben velozmente y se mueven en un rango acotado cercano al 0. jercicios anteriores A diferencia del caso anterior, en este se ocupó una tasa de elitismo, lo que se ve reflejado en  que el la curva del fitness máximo es no decreciente. 
-Cabe resaltar que el máximo del fitness (se encuentra la solución del probelma) se alcanza cerca de la generación 85. Por último, la curva de fitness mínimo sube ligeramente al principio y se estanca variando en torno al -8.
-
-Heatmap de configuraciones: Se ejecuta el algoritmo fijando el umbral de fitness en 0.36 (cuando se encuentra la solución) (y forzando a terminar el algoritmo si se superan las 10000 generaciones) usando torneo con 5 competidores, y tasa de elitismo 0.2. 
+### Heatmap de configuraciones: Ejercicio 1 
+Heatmap de configuraciones: Se ejecuta el algoritmo fijando el umbral de fitness en 0 (cuando se encuentra la solución) (y forzando a terminar el algoritmo si se superan las 500 generaciones) usando torneo con 5 competidores, y tasa de elitismo 0.1. Para la generación de árboles se uso probabilidad de que un árbol deje de crecer =0.3 y máxima profundidad=10.
 Esto para cada combinación de tasa de mutación en [0.0, 0.1, ..., 0.9, 1.0] y tamaño de población en [50, 100, 150, ..., 900, 950 , 1000]
 
-![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_2/Images/Heatmap_EX3.png)
+![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Heatmap_EX1.png)
 
 En el gráfico se muestra el número de la generación en la cual se encuentra la solución del problema al ejecutar el algoritmo con la combinación tasa de mutación y tamaño de población correspondiente. 
-Notar que las casillas con el número 20000 corresponden a configuraciones que no lograron encontrar algún individuo que alcance o supere el umbral establecido, en este caso, esto significa que no pudieron encontrar la solución.
+Notar que las casillas con el número 1000 corresponden a configuraciones que no lograron encontrar algún individuo que alcance o supere el umbral establecido, en este caso, esto significa que no pudieron encontrar la solución.
 Se puede observar que a medida que aumenta el tamaño de población la tasa de mutación se vuelve menos importante. 
 También se puede notar que en valores extremos de la tasa de mutación (0.0 y 1.0) el comportamiento no es idóneo ya sea porque no hay mucho cambio o por la volatilidad excesiva.
 
 Los aprendizajes realizados en el desarrollo de esta tarea pueden resumirse en lo siguiente:
- - El algoritmo genético se puede implementar de forma que tenga la flexibilidad de adaptarse a una gran cantidad de aplicaciones. Como se pudo observar, solo cambiando levemente 
- el modelamiento de los individuos y de la función de fitness se puede resolver una gran gama de problemas de distinta índole.
- - En particular, se visualiza inmensa utilidad para resolver problemas en los que la cantidad de combinaciones posibles para formar soluciones crece exponencialmente, tales como el problema del vendedor viajero.
- - La implementación realizada permite modificaciones futuras con el fin de añadir nuevas formas de selección y reproducción que pueden ser útiles para ciertas aplicaciones. 
-   Por ejemplo, si modificamos la forma de modelar a los individuos del problema 3, ahora teniendo un rango de valore factibles para cada gen en particular, es decir, el número de cajas posibles del tipo i va a variar entre 0 y la función piso de capacidad/peso_i .
-   Para esto, también debemos quitar la restricción de la función de creación de genes. Al hacer esto, el heatmap de configuraciones mejora significativamente resultando en que en la mayoría de los casos la solución se encuentra adentro de la población inicial
-   ![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_2/Images/Heatmap_EX3_1.png)
+ - Esta implementación expande las posibilidades de uso del algoritmo génetico previamente implementado. 
+   Ahora es aplicable a la generación de programas lo que es de suma utilidad en la práctica.
+ - 
+
+ 

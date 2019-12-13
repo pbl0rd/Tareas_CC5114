@@ -3,7 +3,7 @@ import numpy as np
 from arboles import *
 
 
-# Definimos una clase GENALG para nuestro algoritmo genético
+# Definimos una clase GENALG para nuestro algoritmo genético modificado
 class GENALG(object):
 
     # Método inicializador para la clase algoritmo genético : recibe 8 inputs, 2 de ellos opcionales
@@ -207,7 +207,7 @@ class GENALG(object):
                 if sum_fit > th:  # retornamos al individuo en la posición que logra superar el umbral th
                     return self.__pop[i]
 
-    # Método para aplicar la operación crossover a 2 individuos y generar un nuevo individuo.
+    # Método para aplicar la operación crossover a 2 individuos y generar un nuevo individuo. Modificado para árboles
     def crossover(self, indv1, indv2):
         new_element = indv1.copy()  # Hacemos una copìa del padre 1
         p2 = np.random.choice(indv2.serialize()).copy()  # Hacemos una copia de un sub-arbol del padre 2
@@ -215,7 +215,7 @@ class GENALG(object):
                                                                # obtenido del padre 2
         return new_element.copy()  # Retornamos una copia del hijo creado
 
-    # Método para aplicar la operación mutation a 1 individuo y generar un nuevo individuo.
+    # Método para aplicar la operación mutation a 1 individuo y generar un nuevo individuo. Modificado para árboles
     def mutation(self, indv):
         # Vemos si la mutación ocurre
         if np.random.rand() > self.__mut_rate:
