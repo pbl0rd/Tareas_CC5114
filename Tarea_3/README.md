@@ -3,7 +3,7 @@ INFORME TAREA 3
 
 ## Consideraciones
 
-- En esta tarea se implementó un algoritmo genético. 
+- En esta tarea se implementaron técnicas de programación genética. 
 - La implementación se realizó creando una clase GENALG. Esta recibe como entrada el tamaño de la población, función de fitness, función de creacion de genes, función de creación de individuos, diccionario que caracteriza a un individuo, diccionario con la condición de parada, tasa de mutación y una tasa de elitismo
 - Se implementaron dos métodos para realizar la selección: mediante ruleta o mediante torneo. El metodo a usar se puede elegir al hacer correr al algoritmo.
 - Se permite fijar el número de competidores en el método de torneo si se elige para realizar la selección.
@@ -16,7 +16,8 @@ INFORME TAREA 3
 
 - El lenguaje ocupado para el desarrollo de esta tarea es Python 3.7 en Windows. 
 Se recomienda descargar la distribución anaconda desde [aquí](https://repo.anaconda.com/archive/Anaconda3-2019.07-Windows-x86_64.exe) ya que al usar esta distribución no será necesario instalar las librerías por separado.
-- Las librerías ocupadas para el desarrollo de la tarea son numpy, seaborn y matplotlib. Estas podemos instalarlas (en caso de necesitarlo) con facilidad al usar en la consola los siguientes comandos respectivamente:
+- Las librerías ocupadas para el desarrollo de la tarea son copy, numpy, seaborn y matplotlib. Estas podemos instalarlas (en caso de necesitarlo) con facilidad al usar en la consola los siguientes comandos respectivamente:
+- El módulo copy viene preinstalado en python
 - Para instalar numpy usamos el comando `pip install numpy`
 - Para instalar matplotlib usamos el comando `pip install matplotlib`
 - Para instalar seaborn debemos asegurarnos de tener instalado previamente numpy, matplotlib, pandas y scipy por lo que debemos primero ejecutar los comandos (en caso de no tener instalados estos últimos) `pip install pandas` y `pip install scipy`. 

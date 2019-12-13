@@ -1,6 +1,5 @@
 # coding=utf-8
 import numpy as np
-from numpy import random
 from arboles import *
 
 
@@ -212,7 +211,8 @@ class GENALG(object):
     def crossover(self, indv1, indv2):
         new_element = indv1.copy()  # Hacemos una copìa del padre 1
         p2 = np.random.choice(indv2.serialize()).copy()  # Hacemos una copia de un sub-arbol del padre 2
-        np.random.choice(new_element.serialize()).replace(p2) #Reemplazamos en un nodo al azar el sub-arbol obtenido del padre 2
+        np.random.choice(new_element.serialize()).replace(p2)  # Reemplazamos en un nodo al azar el sub-arbol
+                                                               # obtenido del padre 2
         return new_element.copy()  # Retornamos una copia del hijo creado
 
     # Método para aplicar la operación mutation a 1 individuo y generar un nuevo individuo.
@@ -225,7 +225,8 @@ class GENALG(object):
             params = self.__indv_chars.copy() # Hacemos una copia de las caracteristicas de un individuo
             params['max_depth'] = np.random.randint(0, self.__indv_chars['max_depth']+1) #Generamos un tamaño al azar
             p2 = self.__cr_indv(self.__cr_genes, params) # Creamos un arbol aleatorio
-            np.random.choice(new_element.serialize()).replace(p2) #Reemplazamos en un nodo al azar del individuo el arbol obtenido p2
+            np.random.choice(new_element.serialize()).replace(p2)  # Reemplazamos en un nodo al azar del individuo el
+                                                                   # arbol obtenido p2
             return new_element.copy()  # Retornamos una copia del individuo mutado
 
     # Método para aplicar el algortimo genético. Recibe los parametros de la función de fitness en fit_params, el tipo
