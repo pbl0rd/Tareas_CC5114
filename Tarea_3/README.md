@@ -45,9 +45,9 @@ Por esto se decidió hacer otro gráfico sin incorporar el fitness mínimo por g
 ![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Fitness_por_Generacion_EX1_V2.png)
 
 El gráfico anterior muestra la evolución del fitness (máximo y promedio) a medida que avanzan las generaciones.
-Se puede observar que ya a partir de aproximadamente la iteración/generación 10 el fitness máximo (verde) se estanca en las cercanías de 0. 
-Se puede notar también que el fitness promedio (azul) sube rápidamente en las primeras generaciones y después se mantiene oscilando en un rango acotado.
-Por último, el fitness mínimo (rojo) mantiene una oscilación descontrolada a lo largo de las iteraciones.
+Se puede observar que ya a partir de aproximadamente la iteración/generación 175 el fitness máximo (verde) se estanca en 0, esto es, alcanza la solución. 
+Se puede notar también que el fitness promedio (azul) presenta un baja en valor muy significativa cerca de la generación 15 esto hace que comparativamente durante el resto del tiempo se mantenga "estable"
+
 
 A partir de ahora, para términos de este informe, se utilizará este tipo de gráficos para mostrar la evolución del fitness (solo máximo y promedio), no obstante en el repositorio se encuentra la otra versión del gráfico
 
@@ -63,9 +63,9 @@ Mejora de fitness por generación: Se ejecuta el algoritmo durante 200 iteracion
 ![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Fitness_por_Generacion_EX2_V2.png)
 
 El gráfico anterior muestra la evolución del fitness (máximo y promedio) a medida que avanzan las generaciones.
-Se puede observar que ya a partir de aproximadamente la iteración/generación 10 el fitness máximo (verde) se estanca en las cercanías de 0. 
-Se puede notar también que el fitness promedio (azul) sube rápidamente en las primeras generaciones y después se mantiene oscilando en un rango acotado.
-Por último, el fitness mínimo (rojo) mantiene una oscilación descontrolada a lo largo de las iteraciones.
+Se puede observar que ya a partir de aproximadamente la iteración/generación 110 el fitness máximo (verde) se estanca en las cercanías de 0. 
+Al igual que en el ejercicio 1 vemos que el fitness promedio (azul) se mantiene relativamente estable presentando una baja cerca de la generacion 165, sin embargo, esto es solo en apariencia debido a la escala.
+Podemos extraer como conclusión en base al ejercicio 1 y al 2 que en general las soluciones son malas pero dentro de ellas se encuentran unas pocas que son buenas.
 
 ### Ejercicio 3 (2.1.3) Encontrar número sin repetición
 Se debe ocupar las funciones {+,-,*} y los terminales {25,7,8,100,4,2} restringiendo a los árboles de modo que exista a lo más 1 de cada terminal en ellos.
@@ -79,9 +79,8 @@ Mejora de fitness por generación: Se ejecuta el algoritmo durante 1000 iteracio
 ![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Fitness_por_Generacion_EX3_V2.png)
 
 El gráfico anterior muestra la evolución del fitness (máximo y promedio) a medida que avanzan las generaciones.
-Se puede observar que ya a partir de aproximadamente la iteración/generación 10 el fitness máximo (verde) se estanca en las cercanías de 0. 
-Se puede notar también que el fitness promedio (azul) sube rápidamente en las primeras generaciones y después se mantiene oscilando en un rango acotado.
-Por último, el fitness mínimo (rojo) mantiene una oscilación descontrolada a lo largo de las iteraciones.
+Se puede observar que ya a partir de aproximadamente la iteración/generación 700 el fitness máximo (verde) se estanca en las cercanías de 0. 
+Se puede notar también que el fitness promedio (azul) presenta varias bajadas significativas por lo que se puede decir que hay volatilidad en cuanto a la calidad de los individuos de una generación como conjunto.
 
 ### Implementar variables
 Para implementar variables se modificó el método de evaluación que venía en la librería de árboles. 
@@ -104,8 +103,8 @@ Mejora de fitness por generación: Se ejecuta el algoritmo durante 100 iteracion
 ![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Fitness_por_Generacion_EX4_V2.png)
 
 El gráfico anterior muestra la evolución del fitness (máximo, promedio y mínimo) a medida que avanzan las generaciones. 
-Se puede observar que cerca de la iteración/generación 30 el fitness máximo (verde) alcanza el valor máximo 10, es decir, encuentra la frase pedida y después este individuo desaparece de la población. 
-Se puede notar también que las 3 curvas suben velozmente en un principio y luego empiezan oscilar en torno a un rango acotado. 
+Se puede observar que cerca de la iteración/generación 10 el fitness máximo (verde) alcanza el valor máximo 0, es decir, encuentra una expresión que coincide con la ecuación buscada en todos los puntos evaluados. 
+Se puede notar también que la curva de fitness promedio (azul) sigue un comportamiento similar al evidenciado en los ejercicios anteriores. 
 
 ### Implementar el nodo división
 Para implementar el nodo de división se modificó la librería de arboles agregando el nodo DivNode. También se modificó el método de evaluación que venía en la librería de árboles. Puntualmente se intenta realizar la evaluación tal como se describe arriba y en caso de no ser posible se eleva un error.
@@ -123,23 +122,23 @@ Mejora de fitness por generación: Se ejecuta el algoritmo durante 100 iteracion
 ![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Fitness_por_Generacion_EX5_V2.png)
 
 El gráfico anterior muestra la evolución del fitness (máximo, promedio y mínimo) a medida que avanzan las generaciones. 
-Se puede observar que cerca de la iteración/generación 30 el fitness máximo (verde) alcanza el valor máximo 10, es decir, encuentra la frase pedida y después este individuo desaparece de la población. 
-Se puede notar también que las 3 curvas suben velozmente en un principio y luego empiezan oscilar en torno a un rango acotado. 
+Se puede observar que cerca de la iteración/generación 25 el fitness máximo (verde) alcanza el valor máximo 0, es decir, encuentra una expresión que coincide con la ecuación buscada en todos los puntos evaluados. 
+Se ve que al incorporar el nodo de división le tomó más generaciones encontrar la expresión. Con respecto al fitness promedio (azul) observamos un mejor comportamiento que en casos anteriores, estabilizandose rápidamente sin caídas bruscas.
 
 ### Heatmap de configuraciones: Ejercicio 1 
-Heatmap de configuraciones: Se ejecuta el algoritmo fijando el umbral de fitness en 0 (cuando se encuentra la solución) (y forzando a terminar el algoritmo si se superan las 500 generaciones) usando torneo con 5 competidores, y tasa de elitismo 0.1. Para la generación de árboles se uso probabilidad de que un árbol deje de crecer =0.3 y máxima profundidad=10.
+Heatmap de configuraciones: Se ejecuta el algoritmo fijando el umbral de fitness en 0 (cuando se encuentra la solución) (y forzando a terminar el algoritmo si se superan las 100 generaciones) usando torneo con 5 competidores, y tasa de elitismo 0.1. Para la generación de árboles se uso probabilidad de que un árbol deje de crecer =0.3 y máxima profundidad=10.
 Esto para cada combinación de tasa de mutación en [0.0, 0.1, ..., 0.9, 1.0] y tamaño de población en [50, 100, 150, ..., 900, 950 , 1000]
 
 ![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Heatmap_EX1.png)
 
 En el gráfico se muestra el número de la generación en la cual se encuentra la solución del problema al ejecutar el algoritmo con la combinación tasa de mutación y tamaño de población correspondiente. 
-Notar que las casillas con el número 1000 corresponden a configuraciones que no lograron encontrar algún individuo que alcance o supere el umbral establecido, en este caso, esto significa que no pudieron encontrar la solución.
+Notar que las casillas con el número 200 corresponden a configuraciones que no lograron encontrar algún individuo que alcance o supere el umbral establecido, en este caso, esto significa que no pudieron encontrar la solución.
 Se puede observar que a medida que aumenta el tamaño de población la tasa de mutación se vuelve menos importante. 
 También se puede notar que en valores extremos de la tasa de mutación (0.0 y 1.0) el comportamiento no es idóneo ya sea porque no hay mucho cambio o por la volatilidad excesiva.
 
 Los aprendizajes realizados en el desarrollo de esta tarea pueden resumirse en lo siguiente:
  - Esta implementación expande las posibilidades de uso del algoritmo génetico previamente implementado. 
    Ahora es aplicable a la generación de programas lo que es de suma utilidad en la práctica.
- - 
+ - Trabajar con el algoritmo genético y árboles es mucho más versátil que lo visto en la tarea 2. Sin embargo, también es mucho más demandante para el ordenador, por lo que sería interesante como trabajo futuro optimizar las implementaciones con el fin de mejorar el rendimiento y eficiencia de estas.
 
  

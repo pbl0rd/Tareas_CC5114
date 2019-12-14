@@ -54,25 +54,25 @@ def fitness_ex5(indv, objective):
 if __name__ == '__main__':
     # Ejercicio 2.1.3
     # Seteamos los parametros a ser ocupados por el algoritmo para obtener los gráficos pedidos
-    def f(x_):
-        return x_ ** 2 + x_ - 6
+    def f(x):
+        return x ** 2 + x - 6
     func = f
-    ponderador = [1 / 1000, 1000000]
+    ponderador = [1 / 1000000, 1000000]
     fit_params = {'ponderador': ponderador, 'func': func}
-    pop_sz_0 = 100
+    pop_sz_0 = 50
     fit_fn = fitness_ex5
     cr_genes = gene_factory
     cr_indv = indv_factory
     mut_rate = 0.2
-    term_cond = {'type': 'iterations', 'fitness_th': 0, 'iters': 300}
+    term_cond = {'type': 'iterations', 'fitness_th': 0, 'iters': 100}
     selection_type = 'tournament'
     slots = 5
     elitism_rate = 0.1
     random_state = 42
     terminals = [i for i in range(-10, 11)] + ['x' for i in range(20)]
     indv_chars = {'allowed_functions': [AddNode, SubNode, MultNode, DivNode],
-                  'allowed_terminals': terminals, 'prob_terminal': 0.5,
-                  'max_depth': 6}
+                  'allowed_terminals': terminals, 'prob_terminal': 0.3,
+                  'max_depth': 10}
     GA = GENALG(pop_sz_0, fit_fn, cr_genes, cr_indv, indv_chars, term_cond, mut_rate, elitism_rate)
     generations, goal_cross, overall_max_fitness, overall_fittest_indv = GA.apply(fit_params, selection_type,
                                                                                   random_state, slots)
