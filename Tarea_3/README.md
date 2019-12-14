@@ -126,6 +126,7 @@ Se puede observar que cerca de la iteración/generación 25 el fitness máximo (
 Se ve que al incorporar el nodo de división le tomó más generaciones encontrar la expresión. Con respecto al fitness promedio (azul) observamos un mejor comportamiento que en casos anteriores, estabilizandose rápidamente sin caídas bruscas.
 
 ### Heatmap de configuraciones: Ejercicio 1 
+Se escogió generar el heatmap de configuraciones sobre el desempeño en el ejericicio 1.
 Heatmap de configuraciones: Se ejecuta el algoritmo fijando el umbral de fitness en 0 (cuando se encuentra la solución) (y forzando a terminar el algoritmo si se superan las 100 generaciones) usando torneo con 5 competidores, y tasa de elitismo 0.1. Para la generación de árboles se uso probabilidad de que un árbol deje de crecer =0.3 y máxima profundidad=10.
 Esto para cada combinación de tasa de mutación en [0.0, 0.1, ..., 0.9, 1.0] y tamaño de población en [50, 100, 150, ..., 900, 950 , 1000]
 
