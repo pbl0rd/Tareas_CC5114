@@ -127,15 +127,15 @@ Se ve que al incorporar el nodo de división le tomó más generaciones encontra
 
 ### Heatmap de configuraciones: Ejercicio 1 
 Se escogió generar el heatmap de configuraciones sobre el desempeño en el ejericicio 1.
-Heatmap de configuraciones: Se ejecuta el algoritmo fijando el umbral de fitness en 0 (cuando se encuentra la solución) (y forzando a terminar el algoritmo si se superan las 100 generaciones) usando torneo con 5 competidores, y tasa de elitismo 0.1. Para la generación de árboles se uso probabilidad de que un árbol deje de crecer =0.3 y máxima profundidad=10.
+Heatmap de configuraciones: Se ejecuta el algoritmo fijando el umbral de fitness en 0 (cuando se encuentra la solución) (y forzando a terminar el algoritmo si se superan las 500 generaciones) usando torneo con 5 competidores, y tasa de elitismo 0.1. Para la generación de árboles se usó probabilidad de que un árbol deje de crecer de 0.3 y máxima profundidad del árbol de 10.
 Esto para cada combinación de tasa de mutación en [0.0, 0.1, ..., 0.9, 1.0] y tamaño de población en [50, 100, 150, ..., 900, 950 , 1000]
 
 ![alt text](https://github.com/pbl0rd/Tareas_CC5114/blob/master/Tarea_3/Images/Heatmap_EX1.png)
 
 En el gráfico se muestra el número de la generación en la cual se encuentra la solución del problema al ejecutar el algoritmo con la combinación tasa de mutación y tamaño de población correspondiente. 
-Notar que las casillas con el número 200 corresponden a configuraciones que no lograron encontrar algún individuo que alcance o supere el umbral establecido, en este caso, esto significa que no pudieron encontrar la solución.
+Notar que las casillas con el número 1000 corresponden a configuraciones que no lograron encontrar algún individuo que alcance o supere el umbral establecido, en este caso, esto significa que no pudieron encontrar la solución.
 Se puede observar que a medida que aumenta el tamaño de población la tasa de mutación se vuelve menos importante. 
-También se puede notar que en valores extremos de la tasa de mutación (0.0 y 1.0) el comportamiento no es idóneo ya sea porque no hay mucho cambio o por la volatilidad excesiva.
+También se puede notar que en la gran mayoría de los casos la solución es encontrada dentro de las primeras 50 iteraciones. 
 
 Los aprendizajes realizados en el desarrollo de esta tarea pueden resumirse en lo siguiente:
  - Esta implementación expande las posibilidades de uso del algoritmo génetico previamente implementado. 
