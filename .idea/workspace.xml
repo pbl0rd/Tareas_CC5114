@@ -5,11 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/Tareas_CC5114.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Tareas_CC5114.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tarea_3/Desarrollo_T3-Copy1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Tarea_3/Desarrollo_T3-Copy1.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tarea_3/Images/Fitness_por_Generacion_EX1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Tarea_3/Images/Fitness_por_Generacion_EX1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tarea_3/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Tarea_3/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tarea_3/exercise_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tarea_3/exercise_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tarea_3/ex5.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Tarea_3/ex5.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tarea_3/heatmap.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tarea_3/heatmap.py" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,8 +38,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.exercise_1">
-    <configuration name="exercise_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.exercise_2">
+    <configuration name="exercise_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Tareas_CC5114" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -52,7 +63,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tarea_3/exercise_1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tarea_3/exercise_2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -61,7 +72,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="tarea_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="exercise_3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Tareas_CC5114" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -69,11 +80,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tarea_1" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tarea_3" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tarea_1/tarea_1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tarea_3/exercise_3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -82,69 +93,78 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests in test_neural_network.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="exercise_4" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Tareas_CC5114" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tarea_1" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tarea_3" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/Tarea_1/test_neural_network.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tarea_3/exercise_4.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests in test_neuron_layer.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="exercise_5" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Tareas_CC5114" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tarea_1" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tarea_3" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/Tarea_1/test_neuron_layer.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tarea_3/exercise_5.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests in test_neuron.py (1)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="heatmap" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Tareas_CC5114" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tarea_1" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tarea_3" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/Tarea_1/test_neuron.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tarea_3/heatmap.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.exercise_1" />
-        <item itemvalue="Python tests.Unittests in test_neural_network.py" />
-        <item itemvalue="Python tests.Unittests in test_neuron_layer.py" />
-        <item itemvalue="Python.tarea_1" />
-        <item itemvalue="Python tests.Unittests in test_neuron.py (1)" />
+        <item itemvalue="Python.exercise_2" />
+        <item itemvalue="Python.heatmap" />
+        <item itemvalue="Python.exercise_5" />
+        <item itemvalue="Python.exercise_4" />
+        <item itemvalue="Python.exercise_3" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
