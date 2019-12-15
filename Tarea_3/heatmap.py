@@ -57,7 +57,7 @@ if __name__ == '__main__':
                   'allowed_terminals': [25, 7, 8, 100, 4, 2], 'prob_terminal': 0.3, 'max_depth': 10}
     pop_sizes = [50 * i for i in range(1, 21)]
     mut_rates = [i / 10 for i in range(11)]
-    term_cond = {'type': 'fitness_th', 'fitness_th': 0, 'iters': 100}
+    term_cond = {'type': 'fitness_th', 'fitness_th': 0, 'iters': 500}
     res = []
     for rt in mut_rates:
         mut_rate = rt
